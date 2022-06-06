@@ -1,0 +1,94 @@
+{
+  "name": "@crowdstrike/ember-toucan-styles",
+  "version": "8.5.4",
+  "description": "The styles for the CrowdStrike Toucan Design System",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:CrowdStrike/ember-toucan-styles.git",
+    "directory": "ember-toucan-styles"
+  },
+  "license": "UNLICENSED",
+  "author": "CrowdStrike UX Team",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist",
+    "addon-main.cjs",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "concurrently 'npm:watch:*'",
+    "build": "concurrently 'npm:build:*'",
+    "build:js": "rollup -c ./rollup.config.js",
+    "build:docs": "cp ../README.md ./README.md",
+    "watch:js": "rollup -c --watch --no-watch.clearScreen",
+    "lint": "concurrently 'npm:lint:js'",
+    "lint:fix": "concurrently 'npm:lint:js:fix'",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "test": "echo 'Addon does not have tests, run tests in test-app'",
+    "prepare": "yarn run build",
+    "prepublishOnly": "yarn run build"
+  },
+  "dependencies": {
+    "@crowdstrike/tailwind-toucan-base": "3.0.5",
+    "@embroider/addon-shim": "1.7.1",
+    "autoprefixer": "10.4.7",
+    "broccoli-file-creator": "2.1.1",
+    "broccoli-merge-trees": "4.2.0",
+    "ember-browser-services": "2.1.4",
+    "ember-cached-decorator-polyfill": "0.1.4",
+    "ember-cli-postcss": "7.0.2",
+    "postcss": "8.4.13",
+    "postcss-import": "14.1.0",
+    "postcss-nested": "5.0.6",
+    "tailwindcss": "2.2.19"
+  },
+  "devDependencies": {
+    "@babel/core": "7.18.2",
+    "@babel/plugin-proposal-class-properties": "7.17.12",
+    "@babel/plugin-proposal-decorators": "7.18.2",
+    "@babel/plugin-syntax-decorators": "7.17.12",
+    "@babel/plugin-transform-typescript": "7.18.4",
+    "@babel/preset-typescript": "7.17.12",
+    "@embroider/addon-dev": "1.7.1",
+    "@nullvoxpopuli/eslint-configs": "2.2.21",
+    "babel-eslint": "10.1.0",
+    "concurrently": "7.2.1",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-decorator-position": "4.0.1",
+    "eslint-plugin-ember": "10.6.1",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-json": "3.1.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "prettier": "^2.5.1",
+    "rollup": "2.75.5",
+    "rollup-plugin-ts": "3.0.1",
+    "typescript": "4.7.3"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "./addon-main.cjs",
+    "app-js": {}
+  },
+  "engines": {
+    "node": ">=16.13.0"
+  },
+  "volta": {
+    "extends": "../package.json"
+  },
+  "types": "dist"
+}
