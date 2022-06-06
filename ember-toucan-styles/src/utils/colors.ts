@@ -1,6 +1,6 @@
 import { assert } from '@ember/debug';
 
-import themeData from '@crowdstrike/ember-toucan-styles/-private/theme-data';
+import themeData from '@crowdstrike/tailwind-toucan-base/theme-data';
 
 export const SEVERITY_COLORS = {
   INFORMATIONAL: 'informational',
@@ -66,7 +66,7 @@ export function getSeverityColorClass(severityId: number) {
 }
 
 export function getSeverityNameColorClass(
-  severity: typeof SEVERITY_COLORS[keyof typeof SEVERITY_COLORS],
+  severity: typeof SEVERITY_COLORS[keyof typeof SEVERITY_COLORS]
 ) {
   return getSeverityColorClass(Object.values(SEVERITY_COLORS).findIndex((s) => s === severity));
 }

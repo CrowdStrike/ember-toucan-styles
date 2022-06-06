@@ -1,0 +1,37 @@
+provider: github
+template: "v2-addon"
+
+# ---------------------
+
+addon: './ember-toucan-styles'
+testApp: './test-app'
+
+lint:
+  commits: true
+  eslint:
+    - './ember-toucan-styles'
+    - './test-app'
+
+build:
+  run: 'pnpm run build:js'
+  expect: |
+    _app_/components/popper-j-s.js
+    index.js
+    index.js.map
+    index.d.ts
+    components/popper-j-s.js
+    components/popper-j-s.js.map
+    components/popper-j-s.d.ts
+    components/popper-j-s.d.ts.map
+
+
+support:
+  ember-try: true
+  typescript:
+    - typescript@4.5
+    - typescript@4.6
+    - typescript@4.7
+    - typescript@next
+
+release:
+  semantic: true

@@ -1,11 +1,10 @@
+import Service, { inject as service } from '@ember/service';
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-import { setupBrowserFakes } from 'ember-browser-services/test-support';
-import { setupThemeSupport } from '@crowdstrike/ember-toucan-styles/test-support';
-
-import Service, { inject as service } from '@ember/service';
 import { THEMES } from '@crowdstrike/ember-toucan-styles';
+import { setupThemeSupport } from '@crowdstrike/ember-toucan-styles/test-support';
+import { setupBrowserFakes } from 'ember-browser-services/test-support';
 
 module('Service | ThemeManager', function (hooks) {
   setupTest(hooks);
@@ -32,7 +31,7 @@ module('Service | ThemeManager', function (hooks) {
     });
 
     test('isThemeSwitchingEnabled', function (assert) {
-      assert.strictEqual(service.isThemeSwitchingEnabled, true);
+      assert.true(service.isThemeSwitchingEnabled);
     });
   });
 
@@ -53,13 +52,13 @@ module('Service | ThemeManager', function (hooks) {
       test('sets the default theme', function (assert) {
         service.setup();
 
-        assert.strictEqual(document.body.classList.toString().includes(THEMES.LIGHT), true);
+        assert.true(document.body.classList.toString().includes(THEMES.LIGHT));
       });
 
       test('can specify a custom default', function (assert) {
         service.setup(THEMES.DARK);
 
-        assert.strictEqual(document.body.classList.toString().includes(THEMES.DARK), true);
+        assert.true(document.body.classList.toString().includes(THEMES.DARK));
       });
     });
 
@@ -73,7 +72,7 @@ module('Service | ThemeManager', function (hooks) {
       test('saved theme is applied to the body element', function (assert) {
         service.setup();
 
-        assert.strictEqual(document.body.classList.toString().includes(THEMES.DARK), true);
+        assert.true(document.body.classList.toString().includes(THEMES.DARK));
       });
 
       test('currentTheme is updated', function (assert) {
@@ -146,7 +145,7 @@ module('Service | ThemeManager', function (hooks) {
           onUpdateTheme(currentTheme, wasSaved) {
             assertCalled(currentTheme, wasSaved);
           }
-        },
+        }
       );
 
       // actually create the service we just made
@@ -160,14 +159,14 @@ module('Service | ThemeManager', function (hooks) {
 
       assertCalled = (currentTheme, wasSaved) => {
         assert.strictEqual(currentTheme, THEMES.DARK);
-        assert.strictEqual(wasSaved, true);
+        assert.true(wasSaved);
       };
 
       service.selectTheme(THEMES.DARK);
 
       assertCalled = (currentTheme, wasSaved) => {
         assert.strictEqual(currentTheme, THEMES.LIGHT);
-        assert.strictEqual(wasSaved, false);
+        assert.false(wasSaved);
       };
 
       service.selectTheme(THEMES.LIGHT, { shouldSaveTheme: false });

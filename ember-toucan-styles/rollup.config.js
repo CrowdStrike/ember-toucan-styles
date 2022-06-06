@@ -10,20 +10,27 @@ const addon = new Addon({
 });
 
 export default defineConfig({
-  output: addon.output(),
+  // https://github.com/rollup/rollup/issues/1828
+  watch: {
+    chokidar: {
+      usePolling: true,
+    },
+  },
+  output: {
+    ...addon.output(),
+    sourcemap: true,
+    // Needed due to bug in ember-cli-htmlbars removal in consuming apps
+    hoistTransitiveImports: false,
+  },
   plugins: [
     // These are the modules that users should be able to import from your
     // addon. Anything not listed here may get optimized away.
-    addon.publicEntrypoints(['**/*.{js,ts}']),
+    addon.publicEntrypoints(['index.ts', 'services/theme-manager.ts']),
 
     // These are the modules that should get reexported into the traditional
     // "app" tree. Things in here should also be in publicEntrypoints above, but
     // not everything in publicEntrypoints necessarily needs to go here.
-    addon.appReexports([
-      'components/**/*.{js,ts}', 'helpers/**/*.{js,ts}', 'modifiers/**/*.{js,ts}',
-      'services/**/*.js',
-      'initializers/**/*.{js,ts}', 'instance-initializers/**/*.{js,ts}'
-    ]),
+    addon.appReexports(['services/*.{js,ts}']),
     // This babel config should *not* apply presets or compile away ES modules.
     // It exists only to provide development niceties for you, like automatic
     // template colocation.
@@ -33,10 +40,17 @@ export default defineConfig({
       // but we need the ember plugins converted first
       // (template compilation and co-location)
       transpiler: 'babel',
-      browserslist: ['last 2 firefox versions', 'last 2 chrome versions'],
       tsconfig: {
         fileName: 'tsconfig.json',
-        hook: (config) => ({ ...config, declaration: true }),
+        hook: (config) => ({
+          ...config,
+          declaration: true,
+          declarationMap: true,
+          // See: https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#beta-delta
+          // Allows us to use `exports` to define types per export
+          // However, we can't use that feature until the minimum supported TS is 4.7+
+          declarationDir: './dist',
+        }),
       },
     }),
 
@@ -50,8 +64,23 @@ export default defineConfig({
 
     // addons are allowed to contain imports of .css files, which we want rollup
     // to leave alone and keep in the published output.
-    // addon.keepAssets(['**/*.css']),
+    addon.keepAssets(['**/*.css']),
 
     addon.clean(),
+
+    /**
+     * We import this file to have direct access to color and spacing information
+     */
+    {
+      generateBundle() {
+        this.emitFile({
+          type: 'asset',
+          fileName: 'utils/theme-data.js',
+          source: `export default ${JSON.stringify(
+            require('@crowdstrike/tailwind-toucan-base/themes')
+          )};`,
+        });
+      },
+    },
   ],
 });

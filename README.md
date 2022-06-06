@@ -15,6 +15,14 @@ Includes:
 ember install @crowdstrike/ember-toucan-styles @crowdstrike/tailwind-toucan-base
 ```
 
+## Compatibility
+
+- ember-source 3.24+
+- ember-auto-import 2+
+- typecsript 4.5+
+- embroider max-compat and max-strict
+- @glimmer/tracking 1.1.2+
+
 ### App
 
 To configure an Ember App, modify:

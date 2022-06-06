@@ -1,5 +1,5 @@
 'use strict';
 
-let { configs } = require('@crowdstrike/js-lint-config/eslint');
+const { configs } = require('@nullvoxpopuli/eslint-configs');
 
-module.exports = configs.emberOctane();
+module.exports = configs.ember();

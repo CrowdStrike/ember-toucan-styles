@@ -2,6 +2,9 @@
   "name": "@crowdstrike/ember-toucan-styles",
   "version": "8.5.4",
   "description": "The styles for the CrowdStrike Toucan Design System",
+  "keywords": [
+    "ember-addon"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:CrowdStrike/ember-toucan-styles.git",
@@ -10,8 +13,11 @@
   "license": "UNLICENSED",
   "author": "CrowdStrike UX Team",
   "exports": {
-    ".": "./dist/index.js",
-    "./*": "./dist/*"
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/ember-cli/index.js"
+    },
+    "*": "./dist/*"
   },
   "files": [
     "dist",
@@ -34,28 +40,31 @@
     "prepublishOnly": "yarn run build"
   },
   "dependencies": {
-    "@crowdstrike/tailwind-toucan-base": "3.0.5",
-    "@embroider/addon-shim": "1.7.1",
-    "autoprefixer": "10.4.7",
-    "broccoli-file-creator": "2.1.1",
-    "broccoli-merge-trees": "4.2.0",
-    "ember-browser-services": "2.1.4",
-    "ember-cached-decorator-polyfill": "0.1.4",
-    "ember-cli-postcss": "7.0.2",
-    "postcss": "8.4.13",
-    "postcss-import": "14.1.0",
-    "postcss-nested": "5.0.6",
-    "tailwindcss": "2.2.19"
+    "@crowdstrike/tailwind-toucan-base": "^3.0.5",
+    "@embroider/addon-shim": "^1.7.1",
+    "ember-browser-services": "^3.0.5"
+  },
+  "peerDependencies": {
+    "@glimmer/tracking": "^1.1.2",
+    "ember-source": "^3.24.0 || >= 4.0.0",
+    "tailwindcss": "^2.2.15 || ^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.18.2",
-    "@babel/plugin-proposal-class-properties": "7.17.12",
     "@babel/plugin-proposal-decorators": "7.18.2",
-    "@babel/plugin-syntax-decorators": "7.17.12",
-    "@babel/plugin-transform-typescript": "7.18.4",
+    "@babel/plugin-transform-runtime": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
     "@babel/preset-typescript": "7.17.12",
+    "@babel/runtime": "^7.18.3",
     "@embroider/addon-dev": "1.7.1",
+    "@glimmer/tracking": "^1.1.2",
     "@nullvoxpopuli/eslint-configs": "2.2.21",
+    "@types/ember__debug": "^4.0.0",
+    "@types/ember__destroyable": "^4.0.0",
+    "@types/ember__object": "^4.0.0",
+    "@types/ember__service": "^4.0.0",
+    "@types/qunit": "^2.11.2",
+    "autoprefixer": "^10.0.2",
     "babel-eslint": "10.1.0",
     "concurrently": "7.2.1",
     "eslint": "^7.0.0",
@@ -67,9 +76,11 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
+    "postcss": "^8.2.14",
     "prettier": "^2.5.1",
     "rollup": "2.75.5",
     "rollup-plugin-ts": "3.0.1",
+    "tslib": "^2.4.0",
     "typescript": "4.7.3"
   },
   "publishConfig": {
@@ -82,7 +93,9 @@
     "version": 2,
     "type": "addon",
     "main": "./addon-main.cjs",
-    "app-js": {}
+    "app-js": {
+      "./services/theme-manager.js": "./dist/_app_/services/theme-manager.js"
+    }
   },
   "engines": {
     "node": ">=16.13.0"

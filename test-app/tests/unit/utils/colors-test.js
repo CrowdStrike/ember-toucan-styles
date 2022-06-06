@@ -1,7 +1,7 @@
-import { getColor, getGraphColors } from '@crowdstrike/ember-toucan-styles';
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
+import { getColor, getGraphColors } from '@crowdstrike/ember-toucan-styles';
 import { setupThemeSupport } from '@crowdstrike/ember-toucan-styles/test-support';
 
 module('Unit | Utils | Colors ', function (hooks) {
@@ -18,11 +18,13 @@ module('Unit | Utils | Colors ', function (hooks) {
     assert.throws(
       () => getColor('--my-hot-red-car'),
       /my-hot-red-car/,
-      'Throws on an unexpected swatch name',
+      'Throws on an unexpected swatch name'
     );
   });
 
   test('it returns the color wheel palette color values correctly', function (assert) {
+    assert.expect(3 + 11);
+
     getGraphColors().forEach((color) => {
       assert.strictEqual(typeof color, 'object', 'color is an object');
       assert.strictEqual(typeof color.swatchName, 'string', 'color object has a swatch name');
@@ -43,13 +45,15 @@ module('Unit | Utils | Colors ', function (hooks) {
         'graph-10',
         'graph-11',
       ],
-      `Full color wheel palette colors returned in the correct order`,
+      `Full color wheel palette colors returned in the correct order`
     );
   });
 
   test('provides only as many categorical colors as necessary', function (assert) {
+    assert.expect(11);
+
     for (let i = 1; i <= 11; i++) {
-      assert.equal(getGraphColors(i).length, i);
+      assert.strictEqual(getGraphColors(i).length, i);
     }
   });
 
@@ -58,8 +62,10 @@ module('Unit | Utils | Colors ', function (hooks) {
   });
 
   test('changes every color in the palette', function (assert) {
+    assert.expect(11);
+
     for (let i = 1; i <= 11; i++) {
-      assert.equal(getGraphColors(i).length, new Set(getGraphColors(i)).size);
+      assert.strictEqual(getGraphColors(i).length, new Set(getGraphColors(i)).size);
     }
   });
 });

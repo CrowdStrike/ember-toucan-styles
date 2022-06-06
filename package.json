@@ -12,6 +12,7 @@
     "dev:ember": "pnpm run --filter ember-app start --port 0",
     "dev:addon": "pnpm run --filter @crowdstrike/ember-toucan-styles start --no-watch.clearScreen",
     "ci:update": "npx ember-ci-update",
+    "lint:fix": "pnpm --filter '*' run lint:fix",
     "build": "pnpm run --filter @crowdstrike/ember-toucan-styles build"
   },
   "volta": {

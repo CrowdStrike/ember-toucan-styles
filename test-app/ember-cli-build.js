@@ -11,7 +11,6 @@ const { configureTailwind } = require('@crowdstrike/ember-toucan-styles');
 process.env.EMBROIDER_TEST_SETUP_OPTIONS = 'optimized';
 
 module.exports = function (defaults) {
-
   let buildParams = {
     ...configureTailwind(),
   };

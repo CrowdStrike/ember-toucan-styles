@@ -22,6 +22,9 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test"
   },
+  "dependencies": {
+    "@crowdstrike/ember-toucan-styles": "*"
+  },
   "devDependencies": {
     "@babel/core": "7.18.2",
     "@crowdstrike/ember-toucan-styles": "*",

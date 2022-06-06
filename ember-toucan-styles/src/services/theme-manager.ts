@@ -1,13 +1,13 @@
-import Service, { inject as service } from '@ember/service';
-import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { registerDestructor } from '@ember/destroyable';
-import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
+import Service, { inject as service } from '@ember/service';
 
-import { ALL_THEMES, DARK, LIGHT } from '@crowdstrike/ember-toucan-styles/utils/themes';
+import { ALL_THEMES, DARK, LIGHT } from '../utils/themes';
 
+import type { Theme } from '../utils/themes';
 import type { LocalStorageService } from 'ember-browser-services/types';
-import type { Theme } from '@crowdstrike/ember-toucan-styles';
 
 export default class ThemeManagerService extends Service {
   @service('browser/local-storage') declare storage: LocalStorageService;
