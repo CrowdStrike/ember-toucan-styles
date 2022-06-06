@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    { "path": "addon" },
+    { "path": "addon-test-support" },
+  ]
+}

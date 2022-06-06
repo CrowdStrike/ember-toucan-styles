@@ -1,0 +1,39 @@
+/* stylelint-disable order/properties-alphabetical-order */
+/* stylelint-disable no-duplicate-selectors */
+body {
+  overscroll-behavior: none;
+  /*
+  Firefox custom scrollbars
+  https://drafts.csswg.org/css-scrollbars-1/
+  */
+  scrollbar-color: var(--disabled) var(--surface-2xl); /* colors don't change on body scrollbar, only scrollable containers  */
+  scrollbar-width: thin;
+}
+
+/*
+Chrome custom scrollbars (hasn't implemented spec)
+https://webkit.org/blog/363/styling-scrollbars/
+https://css-tricks.com/the-current-state-of-styling-scrollbars/
+
+.has-scrollbars-always is added @crowdstrike/ui/routes/application
+*/
+.has-scrollbars-always ::-webkit-scrollbar {
+  height: 0.75rem; /* vertical */
+  width: 0.75rem; /* horizontal */
+}
+
+.has-scrollbars-always ::-webkit-scrollbar-track,
+.has-scrollbars-always ::-webkit-scrollbar-corner {
+  background-color: var(--surface-2xl);
+}
+
+.has-scrollbars-always ::-webkit-scrollbar-thumb {
+  background-color: var(--disabled);
+  border: 2px solid var(--surface-2xl);
+  border-radius: 0.75rem;
+  min-height: 2rem;
+}
+
+.has-scrollbars-always ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-idle);
+}

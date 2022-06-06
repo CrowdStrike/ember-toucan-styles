@@ -1,0 +1,2 @@
+/* include css-modules files (this file has to exist), but not tailwind -- apps include tailwind */
+@import './scrollbar';

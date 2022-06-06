@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.compiler-options.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declarationDir": "../declarations",
+    "paths": {
+      "@crowdstrike/ember-toucan-styles": ["."],
+      "@crowdstrike/ember-toucan-styles/*": ["./*"]
+    }
+  },
+  "references": [
+    // Normally, these are resolved through node_modules...
+    // but most of our addons don't have node_modules _and_
+    // our own addons wouldn't be inside node_modules anyway.
+  ]
+}
