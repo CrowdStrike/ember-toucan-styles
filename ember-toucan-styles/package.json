@@ -42,7 +42,7 @@
   "dependencies": {
     "@crowdstrike/tailwind-toucan-base": "^3.0.5",
     "@embroider/addon-shim": "^1.7.1",
-    "ember-browser-services": "^3.0.5"
+    "ember-browser-services": "^4.0.0"
   },
   "peerDependencies": {
     "@glimmer/tracking": "^1.1.2",
