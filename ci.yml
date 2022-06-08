@@ -15,15 +15,18 @@ lint:
 build:
   run: 'pnpm run build:js'
   expect: |
-    _app_/components/popper-j-s.js
+    _app_/services/theme-manager.js
     index.js
     index.js.map
     index.d.ts
-    components/popper-j-s.js
-    components/popper-j-s.js.map
-    components/popper-j-s.d.ts
-    components/popper-j-s.d.ts.map
-
+    index.d.ts.map
+    styles/scrollbar.css
+    services/theme-manager.js
+    services/theme-manager.js.map
+    services/theme-manager.d.ts
+    test-support/index.js
+    test-support/index.d.ts
+    test-support/index.js.map
 
 support:
   ember-try: true
