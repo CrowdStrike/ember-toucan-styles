@@ -48,8 +48,7 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "test": "echo 'Addon does not have tests, run tests in test-app'",
-    "prepare": "yarn run build",
-    "prepublishOnly": "yarn run build"
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "@crowdstrike/tailwind-toucan-base": "^3.0.5",
