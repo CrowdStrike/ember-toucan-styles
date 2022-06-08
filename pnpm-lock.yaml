@@ -32,7 +32,7 @@ importers:
       autoprefixer: ^10.0.2
       babel-eslint: 10.1.0
       concurrently: 7.2.1
-      ember-browser-services: ^4.0.1
+      ember-browser-services: ^4.0.2
       eslint: ^7.0.0
       eslint-config-prettier: 8.5.0
       eslint-plugin-decorator-position: 4.0.1
@@ -51,7 +51,7 @@ importers:
     dependencies:
       '@crowdstrike/tailwind-toucan-base': 3.1.1_ugi4xkrfysqkt4c4y6hkyfj344
       '@embroider/addon-shim': 1.7.1
-      ember-browser-services: 4.0.1
+      ember-browser-services: 4.0.2
     devDependencies:
       '@babel/core': 7.18.2
       '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.2
@@ -6801,8 +6801,8 @@ packages:
       - webpack
     dev: true
 
-  /ember-browser-services/4.0.1:
-    resolution: {integrity: sha512-2bpLXojG0sZzGSAYAZiKf1nHYqvaxXGO0DC6HRInDtTlmshK3xCgTy4ifmU4o4h14vtJoqP2heWJEU64uZS9aw==}
+  /ember-browser-services/4.0.2:
+    resolution: {integrity: sha512-b1S/f4kz7cHb3aXrsHpBns+gIGTfmjJE3bkxIyG/EaY6sqa51ZoOJSmmAuQnMbpml5kr3qTEz+8o/0d7Z+WdRQ==}
     engines: {node: 12.* || >= 14}
     dependencies:
       '@embroider/addon-shim': 1.3.0
