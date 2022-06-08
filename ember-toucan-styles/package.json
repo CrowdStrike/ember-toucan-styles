@@ -15,12 +15,24 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/ember-cli/index.js"
+      "require": "./src/ember-cli/index.cjs"
     },
-    "*": "./dist/*"
+    "./test-support": "./dist/test-support/index.js",
+    "./*": "./dist/*"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/*"
+      ],
+      "test-support": [
+        "dist/test-support/index.d.ts"
+      ]
+    }
   },
   "files": [
     "dist",
+    "src/ember-cli",
     "addon-main.cjs",
     "CHANGELOG.md",
     "README.md"
@@ -42,12 +54,22 @@
   "dependencies": {
     "@crowdstrike/tailwind-toucan-base": "^3.0.5",
     "@embroider/addon-shim": "^1.7.1",
-    "ember-browser-services": "^4.0.0"
+    "ember-browser-services": "^4.0.1"
   },
   "peerDependencies": {
     "@glimmer/tracking": "^1.1.2",
     "ember-source": "^3.24.0 || >= 4.0.0",
-    "tailwindcss": "^2.2.15 || ^3.0.0"
+    "tailwindcss": "^2.2.15 || ^3.0.0",
+    "postcss-import": "^14.1.0",
+    "postcss": "^8.0.0"
+  },
+  "peerDependenciesMeta": {
+    "postcss-import": {
+      "optional": true
+    },
+    "postcss": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@babel/core": "7.18.2",

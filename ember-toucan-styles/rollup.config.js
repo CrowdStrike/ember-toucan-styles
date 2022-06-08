@@ -25,7 +25,7 @@ export default defineConfig({
   plugins: [
     // These are the modules that users should be able to import from your
     // addon. Anything not listed here may get optimized away.
-    addon.publicEntrypoints(['index.ts', 'services/theme-manager.ts']),
+    addon.publicEntrypoints(['index.ts', 'services/theme-manager.ts', 'test-support/index.ts']),
 
     // These are the modules that should get reexported into the traditional
     // "app" tree. Things in here should also be in publicEntrypoints above, but

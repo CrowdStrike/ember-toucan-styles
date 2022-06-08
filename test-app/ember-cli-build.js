@@ -3,7 +3,7 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 // eslint doesn't know that we can require ourselves :D
-// eslint-disable-next-line node/no-extraneous-require
+// eslint-disable-next-line node/no-extraneous-require, node/no-missing-require
 const { configureTailwind } = require('@crowdstrike/ember-toucan-styles');
 
 // Intimate / Private information:
