@@ -51,7 +51,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@crowdstrike/tailwind-toucan-base": "^3.0.5",
+    "@crowdstrike/tailwind-toucan-base": "^3.1.1",
     "@embroider/addon-shim": "^1.7.1",
     "ember-browser-services": "^4.0.1"
   },
@@ -101,8 +101,8 @@
     "eslint-plugin-simple-import-sort": "7.0.0",
     "postcss": "^8.2.14",
     "prettier": "^2.5.1",
-    "rollup": "2.75.5",
-    "rollup-plugin-ts": "3.0.1",
+    "rollup": "2.75.6",
+    "rollup-plugin-ts": "3.0.2",
     "tslib": "^2.4.0",
     "typescript": "4.7.3"
   },
