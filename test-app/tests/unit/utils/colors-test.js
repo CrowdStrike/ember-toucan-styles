@@ -23,15 +23,17 @@ module('Unit | Utils | Colors ', function (hooks) {
   });
 
   test('it returns the color wheel palette color values correctly', function (assert) {
-    assert.expect(3 + 11);
+    let graphColors = getGraphColors();
 
-    getGraphColors().forEach((color) => {
+    assert.expect(graphColors.length * 3 + 1);
+
+    graphColors.forEach((color) => {
       assert.strictEqual(typeof color, 'object', 'color is an object');
       assert.strictEqual(typeof color.swatchName, 'string', 'color object has a swatch name');
       assert.strictEqual(typeof color.swatchClass, 'string', 'color object has a swatch class');
     });
     assert.deepEqual(
-      getGraphColors().map((item) => item.swatchName),
+      graphColors.map((item) => item.swatchName),
       [
         'graph-1',
         'graph-2',
