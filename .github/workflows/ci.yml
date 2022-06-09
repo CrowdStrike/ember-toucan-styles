@@ -98,7 +98,7 @@ jobs:
             index.js.map
             index.d.ts
             index.d.ts.map
-            styles/scrollbar.css
+            scrollbar.css
             services/theme-manager.js
             services/theme-manager.js.map
             services/theme-manager.d.ts
