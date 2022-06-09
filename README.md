@@ -9,6 +9,22 @@ Includes:
 - A base `ThemeManager` service, for managing the current style theme from JavaScript -- no included by default, but may be extended
 - Testing utilities for qunit tests that affect the current theme.
 
+[Setup](#setup)
+  - [Tailwind 3](#tailwind-3)
+    - [App](#app-tailwind-3)
+  - [Tailwind 2](#tailwind-2)
+    - [App](#app-tailwind-2)
+    - [v1 Addons](#v1addon-tailwind-2)
+    - [CSS-Modules](#css-modules)
+
+[Usage](#usage)
+  - [Scrollbar Styles](#scrollbar-styles)
+  - [Custom Theme Manager](#using-a-custom-theme-manager)
+  - [Setting the Default Theme](#setting-the-default-theme)
+  - [Responding to Theme Changes](#responding-to-theme-changes)
+  - [Using Tailwind Plugins](#using-your-own-tailwind-plugins)
+
+
 ## Install
 
 ```
@@ -23,7 +39,118 @@ ember install @crowdstrike/ember-toucan-styles @crowdstrike/tailwind-toucan-base
 - embroider max-compat and max-strict
 - @glimmer/tracking 1.1.2+
 
-### App
+## Setup
+
+### Tailwind 3
+
+<details><summary>
+  <a name="#app-tailwind-3" href="#app-tailwind-3">App</a>
+</summary>
+
+1. Create an ember app.
+   You don't have to start with a fresh ember app!
+
+2. Add tailwind however you like.
+  An easy approach is
+  ```bash
+  # In your terminal
+  npx ember-apply tailwind
+  ```
+
+3. Install this library.
+  ```bash
+  # In your terminal
+  pnpm add @crowdstrike/ember-toucan-styles @crowdstrike/tailwind-toucan-base
+  ```
+
+4. Add the toucan-base plugin to your tailwind config's plugin list
+  ```js
+  // config/tailwind/tailwind.config.js
+  'use strict';
+
+  const path = require('path');
+
+  const appRoot = path.join(__dirname, '../../');
+  const appEntry = path.join(appRoot, 'app');
+  const relevantFilesGlob = '**/*.{html,js,ts,hbs,gjs,gts}';
+
+  module.exports = {
+    content: [path.join(appEntry, relevantFilesGlob)],
+    theme: {
+      extend: {},
+    },
+    presets: [
+      require('@crowdstrike/tailwind-toucan-base')
+    ],
+    safelist: [
+      'theme-dark',
+      'theme-light',
+    ]
+  };
+
+  ```
+
+5. Create a button to toggle the theme
+  ```bash
+  # In your terminal
+  ember g theme-toggle -gc
+  ```
+
+6. Add code to theme-toggle to toggle the theme (and to observe that the theme is toggling)
+  ```js
+  // app/components/theme-toggle.js
+  import Component from '@glimmer/component';
+  import { service } from '@ember/service';
+
+  export default class DemoComponent extends Component {
+    @service themeManager;
+
+    toggle = () => this.themeManager.toggleTheme();
+  }
+  ```
+  ```hbs
+  {{! app/components/theme-toggle.hbs }}
+  <button
+    class="
+      flex whitespace-nowrap bg-surface-base type-md-tight text-titles-and-attributes
+      focus:outline-none p-2 rounded"
+    {{on 'click' this.toggle}}
+  >
+    toggle
+  </button>
+  ```
+
+  More of our colors and tailwind classes can be found here: https://tailwind-toucan-base.pages.dev/
+
+
+7. Invoke `<ThemeToggle>` in `app/templates/application.hbs`
+  ```hbs
+  <ThemeToggle />
+  ```
+
+8. Start both the ember dev server and the tailwind build
+  ```bash
+  # in terminal 1
+  pnpm start
+  # in terminal 2
+  pnpm tailwind:watch
+  ```
+
+9. A local server will boot at `http://localhosts:4200` and clicking the rendered button will toggle the background color.
+
+
+------------------------------
+
+Note that if you're using embroider + webpack, you also have the option to follow the popular guides on setting up tailwind with webpack
+
+</details>
+
+### Tailwind 2
+
+<details><summary>
+  <a name="#app-tailwind-2" href="#app-tailwind-2">App</a>
+</summary>
+
 
 To configure an Ember App, modify:
  - ember-cli-build.js
@@ -55,9 +182,12 @@ module.exports = function (defaults) {
 NOTE: if you're also using css-modules, you'll want to import the css-modules
 output before `@tailwind base;`
 
-Then, follow instructions for setup on the ember-toucan-styles README
 
-### Addon
+</details>
+
+<details><summary>
+  <a name="#v1addon-tailwind-2" href="#v1addon-tailwind-2">V1 Addon</a>
+</summary>
 
 ```cjs
 // ember-cli-build.js
@@ -89,7 +219,12 @@ Add `ember-cli-postcss` to your `devDependencies`
 And lastly, for tests in your addon to have colors, you'll need to set either
 `theme-light` or `theme-dark` on the body class.
 
-### If you need to use CSS-Modules
+</details>
+
+
+<details><summary>
+  <a name="#css-modules" href="#css-modules">CSS Modules</a>
+</summary>
 
 It is recommended to avoid CSS-Modules, as Tailwind is very flexible -- it may
 require a different approach to achieve the stylistic goal though.
@@ -122,6 +257,16 @@ Example:
 </button>
 ```
 
+</details>
+
+### Scrollbar Styles
+
+To get toucan-themed scrollbars in browsers that support scrollbar customization
+
+```css
+@import '@crowdstrike/ember-toucan-styles/scollbar.css'
+```
+
 ### Using a Custom Theme Manager
 
 #### Setup
@@ -147,7 +292,7 @@ export default class MyThemeManager extends ThemeManager {
 > ```
 
 
-#### Initializing the default theme
+#### Setting the Default Theme
 
 Somewhere in the consuming app or addon, run
 
@@ -156,7 +301,8 @@ import { inject as service } from '@ember/service';
 import { THEMES } from '@crowdstrike/ember-toucan-styles';
 
 class MyClass {
-  @service('my-theme-manager') themeManager;
+  @service themeManager;
+  // or @service('my-theme-manager') themeManager;
 
   setup() {
     // using a default theme (THEMES.LIGHT)
@@ -171,7 +317,7 @@ class MyClass {
 This will first checkout the `current-theme` key in local storage and if that doesn't exist, the the argument passed to `setup()` will be used as the default.
 
 
-#### Responding to behavior from the ThemeManager
+#### Responding to Theme Changes
 
 It is possible to apply certain behaviors when a theme switch occurs, for example:
 
@@ -213,4 +359,4 @@ function trackingKey(themeName) {
 
 ### Using your own Tailwind Plugins
 
-TODO: Write this
+Add them to your .tailwind.config.js, as normal in https://tailwindcss.com/docs/plugins
