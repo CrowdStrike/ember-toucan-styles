@@ -63,7 +63,7 @@ ember install @crowdstrike/ember-toucan-styles @crowdstrike/tailwind-toucan-base
   pnpm add @crowdstrike/ember-toucan-styles @crowdstrike/tailwind-toucan-base
   ```
 
-4. Add the toucan-base plugin to your tailwind config's plugin list
+4. Add the toucan-base plugin to your tailwind config's plugin list.
   ```js
   // config/tailwind/tailwind.config.js
   'use strict';
@@ -90,13 +90,14 @@ ember install @crowdstrike/ember-toucan-styles @crowdstrike/tailwind-toucan-base
 
   ```
 
-5. Create a button to toggle the theme
+5. Create a button to toggle the theme.
   ```bash
   # In your terminal
   ember g theme-toggle -gc
   ```
 
-6. Add code to theme-toggle to toggle the theme (and to observe that the theme is toggling)
+6. Add code to theme-toggle to toggle the theme (and to observe that the theme is toggling).
+  Today, Toucan only supports light and dark mode, so this toggle will flip bteween the light theme and dark theme.
   ```js
   // app/components/theme-toggle.js
   import Component from '@glimmer/component';
@@ -123,12 +124,12 @@ ember install @crowdstrike/ember-toucan-styles @crowdstrike/tailwind-toucan-base
   More of our colors and tailwind classes can be found here: https://tailwind-toucan-base.pages.dev/
 
 
-7. Invoke `<ThemeToggle>` in `app/templates/application.hbs`
+7. Invoke `<ThemeToggle>` in `app/templates/application.hbs`.
   ```hbs
   <ThemeToggle />
   ```
 
-8. Start both the ember dev server and the tailwind build
+8. Start both the ember dev server and the tailwind build.
   ```bash
   # in terminal 1
   pnpm start
@@ -223,7 +224,7 @@ And lastly, for tests in your addon to have colors, you'll need to set either
 
 
 <details><summary>
-  <a name="#css-modules" href="#css-modules">CSS Modules</a>
+  <a name="#css-modules" href="#css-modules">CSS Modules in Apps</a>
 </summary>
 
 It is recommended to avoid CSS-Modules, as Tailwind is very flexible -- it may
@@ -239,10 +240,15 @@ Follow these steps:
     +const { configureCSSModules } = require('@crowdstrike/ember-toucan-styles');
     ```
 
+    To use this in an addon, you'll want to apply these to the `options` object of the v1 addon's index.js.
+    V2 Addons do not support app-build modifications, so the app would need to configure css-modules support.
+
 
 ## Usage
 
-Then, components may be written following [the tailwind documentation](https://tailwindcss.com/docs/height/#app).
+Components may be written following [the tailwind documentation](https://tailwindcss.com/docs/height/#app).
+Common CSS classes provided by the Toucan preset for Tailwind can be [viewed here](https://tailwind-toucan-base.pages.dev/)
+( [Source Code here](https://github.com/CrowdStrike/tailwind-toucan-base) ).
 
 Example:
 
@@ -330,8 +336,8 @@ import { THEMES, ThemeManager } from '@crowdstrike/ember-toucan-styles';
 import { EVENTS } from '@crowdstrike/ui/analytics/ui';
 
 export default class MyThemeManager extends ThemeManager {
-  @service('prex') prex;
-  @service('analytics') analytics;
+  @service externalGraphics;
+  @service analytics;
 
   @action
   onUpdateTheme(currentTheme, wasSaved = true) {
@@ -341,7 +347,7 @@ export default class MyThemeManager extends ThemeManager {
       this.analytics.trackEvent(this, key);
     }
 
-    this.prex.updateTheme(currentTheme);
+    this.externalGraphics.updateTheme(currentTheme);
   }
 }
 
