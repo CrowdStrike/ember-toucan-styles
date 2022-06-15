@@ -15,6 +15,11 @@
     "lint:fix": "pnpm --filter '*' run lint:fix",
     "build": "pnpm run --filter @crowdstrike/ember-toucan-styles build"
   },
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "concurrently": "7.2.1"
+  },
   "volta": {
     "node": "16.15.1"
   },
