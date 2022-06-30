@@ -6,7 +6,7 @@ Includes:
 - Base CSS and Tailwind configuration automatically integrated into the Ember build pipeline
 - Color variables automatically pulled from Figma
 - Color utilities at `@crowdstrike/ember-toucan-styles/utils/colors`
-- A base `ThemeManager` service, for managing the current style theme from JavaScript -- no included by default, but may be extended
+- A base `ThemeManager` service, for managing the current style theme from JavaScript -- not included by default, but may be extended
 - Testing utilities for qunit tests that affect the current theme.
 
 [Setup](#setup)
@@ -97,7 +97,7 @@ ember install @crowdstrike/ember-toucan-styles @crowdstrike/tailwind-toucan-base
   ```
 
 6. Add code to theme-toggle to toggle the theme (and to observe that the theme is toggling).
-  Today, Toucan only supports light and dark mode, so this toggle will flip bteween the light theme and dark theme.
+  Today, Toucan only supports light and dark mode, so this toggle will flip between the light theme and dark theme.
   ```js
   // app/components/theme-toggle.js
   import Component from '@glimmer/component';
