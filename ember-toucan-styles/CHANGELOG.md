@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/CrowdStrike/ember-toucan-styles/compare/v1.0.0...v1.0.1) (2022-06-30)
+
+
+### Bug Fixes
+
+* **package:** set access to public to publish to npm ([a544d91](https://github.com/CrowdStrike/ember-toucan-styles/commit/a544d91fff3a5f2abe9c93978243f1f7efb8bd87))
+
 # 1.0.0 (2022-06-30)
 
 
