@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/CrowdStrike/ember-toucan-styles/compare/v1.0.1...v1.0.2) (2022-06-30)
+
+
+### Bug Fixes
+
+* **license:** use MIT license ([e61600a](https://github.com/CrowdStrike/ember-toucan-styles/commit/e61600af0d6226752136f43eca9e3adab4def191))
+
 ## [1.0.1](https://github.com/CrowdStrike/ember-toucan-styles/compare/v1.0.0...v1.0.1) (2022-06-30)
 
 
