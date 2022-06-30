@@ -38,6 +38,7 @@
     "README.md"
   ],
   "scripts": {
+    "release": "semantic-release",
     "start": "pnpm watch:js",
     "build": "concurrently 'npm:build:*'",
     "build:js": "rollup -c ./rollup.config.js",
@@ -82,6 +83,8 @@
     "@embroider/addon-dev": "1.7.1",
     "@glimmer/tracking": "^1.1.2",
     "@nullvoxpopuli/eslint-configs": "2.2.21",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
     "@types/ember__debug": "^4.0.0",
     "@types/ember__destroyable": "^4.0.0",
     "@types/ember__object": "^4.0.0",
@@ -103,6 +106,7 @@
     "prettier": "^2.5.1",
     "rollup": "2.75.6",
     "rollup-plugin-ts": "3.0.2",
+    "semantic-release": "^19.0.2",
     "tslib": "^2.4.0",
     "typescript": "4.7.3"
   },
@@ -120,9 +124,21 @@
       "./services/theme-manager.js": "./dist/_app_/services/theme-manager.js"
     }
   },
-  "engines": {
-    "node": ">=16.13.0"
+  "release": {
+    "branches": [
+      "main",
+      "master"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      "@semantic-release/git"
+    ]
   },
+  "packageManager": "pnpm@7.3.0",
   "volta": {
     "extends": "../package.json"
   },
