@@ -2,6 +2,7 @@
   "name": "@crowdstrike/ember-toucan-styles",
   "version": "1.0.0",
   "description": "The styles for the CrowdStrike Toucan Design System",
+  "private": false,
   "keywords": [
     "ember-addon"
   ],
@@ -111,6 +112,7 @@
     "typescript": "4.7.3"
   },
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.npmjs.org"
   },
   "ember": {
