@@ -6,10 +6,6 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 // eslint-disable-next-line node/no-extraneous-require, node/no-missing-require
 const { configureTailwind } = require('@crowdstrike/ember-toucan-styles');
 
-// Intimate / Private information:
-// https://github.com/embroider-build/embroider/blob/main/packages/test-setup/src/index.ts#L85
-process.env.EMBROIDER_TEST_SETUP_OPTIONS = 'optimized';
-
 module.exports = function (defaults) {
   let buildParams = {
     ...configureTailwind(),
@@ -26,5 +22,11 @@ module.exports = function (defaults) {
 
   const { maybeEmbroider } = require('@embroider/test-setup');
 
-  return maybeEmbroider(app);
+  return maybeEmbroider(app, {
+    skipBabel: [
+      {
+        package: 'qunit',
+      },
+    ],
+  });
 };
