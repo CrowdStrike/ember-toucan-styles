@@ -159,7 +159,7 @@ To configure an Ember App, modify:
 ```cjs
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-const { configureTailwind } = require('@crowdstrike/ember-toucan-styles');
+const { configureTailwind } = require('@crowdstrike/ember-toucan-styles/ember-cli');
 
 const tailwindConfig = require('./tailwind.config');
 
@@ -195,7 +195,7 @@ output before `@tailwind base;`
 
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
-const { configureTailwind } = require('@crowdstrike/ember-toucan-styles');
+const { configureTailwind } = require('@crowdstrike/ember-toucan-styles/ember-cli');
 
 const tailwindConfig = require('./tailwind.config');
 
@@ -236,8 +236,8 @@ Follow these steps:
  - change `ember-cli-build.js`
 
     ```diff
-    -const { configureTailwind } = require('@crowdstrike/ember-toucan-styles');
-    +const { configureCSSModules } = require('@crowdstrike/ember-toucan-styles');
+    -const { configureTailwind } = require('@crowdstrike/ember-toucan-styles/ember-cli');
+    +const { configureCSSModules } = require('@crowdstrike/ember-toucan-styles/ember-cli');
     ```
 
     To use this in an addon, you'll want to apply these to the `options` object of the v1 addon's index.js.

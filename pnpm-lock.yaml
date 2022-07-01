@@ -51,7 +51,8 @@ importers:
       eslint-plugin-node: 11.1.0
       eslint-plugin-prettier: 4.0.0
       eslint-plugin-simple-import-sort: 7.0.0
-      postcss: ^8.2.14
+      postcss: ^8.0.0
+      postcss-import: ^14.1.0
       prettier: ^2.5.1
       rollup: 2.75.6
       rollup-plugin-ts: 3.0.2
@@ -62,6 +63,8 @@ importers:
       '@crowdstrike/tailwind-toucan-base': 3.1.1_ugi4xkrfysqkt4c4y6hkyfj344
       '@embroider/addon-shim': 1.7.1
       ember-browser-services: 4.0.3
+      postcss: 8.4.14
+      postcss-import: 14.1.0_postcss@8.4.14
     devDependencies:
       '@babel/core': 7.18.2
       '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.2
@@ -93,7 +96,6 @@ importers:
       eslint-plugin-node: 11.1.0_eslint@7.32.0
       eslint-plugin-prettier: 4.0.0_evcial7aw3q6fcauxv2c7fxuoe
       eslint-plugin-simple-import-sort: 7.0.0_eslint@7.32.0
-      postcss: 8.4.14
       prettier: 2.6.2
       rollup: 2.75.6
       rollup-plugin-ts: 3.0.2_zhhruumeih4cvi76ufpovrqpve
@@ -12740,7 +12742,6 @@ packages:
   /pify/2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /pify/3.0.0:
     resolution: {integrity: sha512-C3FsVNH1udSEX48gGX1xfvwTWfsYWj5U+8/uK15BGzIGrKoUpghX8hWZwa/OFnakBiiVNmBvemTJR5mcy7iPcg==}
@@ -12825,7 +12826,6 @@ packages:
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.0
-    dev: true
 
   /postcss-js/3.0.3:
     resolution: {integrity: sha512-gWnoWQXKFw65Hk/mi2+WTQTHdPD5UJdDXZmX073EY/B3BWnYjO4F4t0VneTCnCGQ5E5GsCdMkzPaTXwl3r5dJw==}
@@ -13207,7 +13207,6 @@ packages:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
     dependencies:
       pify: 2.3.0
-    dev: true
 
   /read-pkg-up/7.0.1:
     resolution: {integrity: sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg==}
