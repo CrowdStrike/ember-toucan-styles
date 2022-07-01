@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/CrowdStrike/ember-toucan-styles/compare/v1.0.2...v1.0.3) (2022-07-01)
+
+
+### Bug Fixes
+
+* **ember-cli:** compat with ember-cli requires postcss + postcss-import to be dependencies ([34e2474](https://github.com/CrowdStrike/ember-toucan-styles/commit/34e24745581e1cd1921a09094965bd7af9ac0178))
+
 ## [1.0.2](https://github.com/CrowdStrike/ember-toucan-styles/compare/v1.0.1...v1.0.2) (2022-06-30)
 
 
