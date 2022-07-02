@@ -15,6 +15,8 @@
   "author": "CrowdStrike UX Team",
   "exports": {
     ".": "./dist/index.js",
+    "./utils/colors": "./dist/utils/colors.js",
+    "./utils/themes": "./dist/utils/themes.js",
     "./ember-cli": "./src/ember-cli/index.cjs",
     "./test-support": "./dist/test-support/index.js",
     "./*": "./dist/*"
