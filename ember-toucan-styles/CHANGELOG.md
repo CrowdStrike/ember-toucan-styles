@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/CrowdStrike/ember-toucan-styles/compare/v1.0.3...v1.0.4) (2022-07-02)
+
+
+### Bug Fixes
+
+* **utils:** add colors and themes utils ([5894120](https://github.com/CrowdStrike/ember-toucan-styles/commit/5894120019deca03b122e2ae0fb5f858788152b3))
+
 ## [1.0.3](https://github.com/CrowdStrike/ember-toucan-styles/compare/v1.0.2...v1.0.3) (2022-07-01)
 
 
