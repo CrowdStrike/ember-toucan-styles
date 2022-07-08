@@ -24,7 +24,7 @@
   "typesVersions": {
     "*": {
       "*": [
-        "dist/*"
+        "dist/*.d.ts"
       ],
       "test-support": [
         "dist/test-support/index.d.ts"
