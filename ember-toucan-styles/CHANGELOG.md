@@ -1,3 +1,11 @@
+## [1.0.5](https://github.com/CrowdStrike/ember-toucan-styles/compare/v1.0.4...v1.0.5) (2022-07-10)
+
+
+### Bug Fixes
+
+* remove unneeded private file ([2b6cdf0](https://github.com/CrowdStrike/ember-toucan-styles/commit/2b6cdf0a5a5ec784917c4c0a0a2955e0c0b33918))
+* **types:** typesVersions needs a .d.ts extension ([d72f787](https://github.com/CrowdStrike/ember-toucan-styles/commit/d72f78731d91b9ea4be43a39d7994828f3b848d9))
+
 ## [1.0.4](https://github.com/CrowdStrike/ember-toucan-styles/compare/v1.0.3...v1.0.4) (2022-07-02)
 
 
