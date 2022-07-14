@@ -93,7 +93,7 @@ ember install @crowdstrike/ember-toucan-styles @crowdstrike/tailwind-toucan-base
 5. Create a button to toggle the theme.
   ```bash
   # In your terminal
-  ember g theme-toggle -gc
+  ember g component theme-toggle -gc
   ```
 
 6. Add code to theme-toggle to toggle the theme (and to observe that the theme is toggling).
