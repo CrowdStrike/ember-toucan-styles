@@ -3,7 +3,7 @@
 const { resolve } = require;
 
 module.exports = {
-  presets: [resolve('@babel/preset-env'), resolve('@babel/preset-typescript')],
+  presets: [resolve('@babel/preset-typescript')],
   plugins: [
     [
       resolve('@babel/plugin-transform-typescript'),
@@ -21,10 +21,6 @@ module.exports = {
         legacy: true,
       },
     ],
-    // This exists due to a bug in ember-cli-babel
-    // https://github.com/babel/ember-cli-babel/issues/447
     [resolve('@babel/plugin-proposal-class-properties')],
-    // eslint-disable-next-line node/no-missing-require
-    resolve('@embroider/addon-dev/template-colocation-plugin'),
   ],
 };

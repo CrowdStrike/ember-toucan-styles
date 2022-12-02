@@ -41,9 +41,7 @@
   "scripts": {
     "release": "semantic-release",
     "start": "pnpm watch:js",
-    "build": "concurrently 'npm:build:*'",
-    "build:js": "rollup -c ./rollup.config.js",
-    "build:docs": "cp ../README.md ./README.md",
+    "build": "rollup -c ./rollup.config.mjs",
     "watch:js": "rollup -c --watch --no-watch.clearScreen",
     "lint": "concurrently 'npm:lint:js'",
     "lint:fix": "concurrently 'npm:lint:js:fix'",
@@ -56,8 +54,8 @@
     "@crowdstrike/tailwind-toucan-base": "^3.1.1",
     "@embroider/addon-shim": "^1.7.1",
     "ember-browser-services": "^4.0.3",
-    "postcss-import": "^14.1.0",
-    "postcss": "^8.0.0"
+    "postcss": "^8.0.0",
+    "postcss-import": "^14.1.0"
   },
   "peerDependencies": {
     "@glimmer/tracking": "^1.1.2",
@@ -73,7 +71,7 @@
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-typescript": "7.17.12",
     "@babel/runtime": "^7.18.3",
-    "@embroider/addon-dev": "1.7.1",
+    "@embroider/addon-dev": "3.0.0",
     "@glimmer/tracking": "^1.1.2",
     "@nullvoxpopuli/eslint-configs": "2.2.21",
     "@semantic-release/changelog": "^6.0.1",
@@ -97,7 +95,8 @@
     "eslint-plugin-simple-import-sort": "7.0.0",
     "postcss": "^8.2.14",
     "prettier": "^2.5.1",
-    "rollup": "2.75.6",
+    "rollup": "3.5.1",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-ts": "3.0.2",
     "semantic-release": "^19.0.2",
     "tslib": "^2.4.0",
