@@ -13,7 +13,7 @@ lint:
     - './test-app'
 
 build:
-  run: 'pnpm run build:js'
+  run: 'pnpm run build'
   expect: |
     _app_/services/theme-manager.js
     index.js

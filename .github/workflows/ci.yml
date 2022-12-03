@@ -90,7 +90,7 @@ jobs:
         run: |-
           echo 'target: ember-toucan-styles/dist
           setup:
-            run: pnpm run build:js
+            run: pnpm run build
             cwd: ./ember-toucan-styles
           expect: |
             _app_/services/theme-manager.js
