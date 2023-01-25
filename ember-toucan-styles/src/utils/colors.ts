@@ -1,13 +1,13 @@
-import { assert } from '@ember/debug';
+import { assert } from "@ember/debug";
 
-import themeData from '@crowdstrike/tailwind-toucan-base/theme-data';
+import themeData from "@crowdstrike/tailwind-toucan-base/theme-data";
 
 export const SEVERITY_COLORS = {
-  INFORMATIONAL: 'informational',
-  LOW: 'low',
-  MEDIUM: 'medium',
-  HIGH: 'high',
-  CRITICAL: 'critical',
+  INFORMATIONAL: "informational",
+  LOW: "low",
+  MEDIUM: "medium",
+  HIGH: "high",
+  CRITICAL: "critical",
 } as const;
 
 const PRIORITY_COLOR_SWATCHES = [
@@ -66,20 +66,28 @@ export function getSeverityColorClass(severityId: number) {
 }
 
 export function getSeverityNameColorClass(
-  severity: typeof SEVERITY_COLORS[keyof typeof SEVERITY_COLORS]
+  severity: (typeof SEVERITY_COLORS)[keyof typeof SEVERITY_COLORS]
 ) {
-  return getSeverityColorClass(Object.values(SEVERITY_COLORS).findIndex((s) => s === severity));
+  return getSeverityColorClass(
+    Object.values(SEVERITY_COLORS).findIndex((s) => s === severity)
+  );
 }
 
 // gets a colour scale with max contrast for a given number of items
 export function getColorScale(numItems: number) {
   let numColors = GRAPH_COLORS.length;
 
-  return Array.from({ length: numItems }, (_, i) => GRAPH_COLORS[(i + 3) % numColors]);
+  return Array.from(
+    { length: numItems },
+    (_, i) => GRAPH_COLORS[(i + 3) % numColors]
+  );
 }
 
 export function getGraphColors(count = 11) {
-  assert(`requested ${count} graph colors, more than the allowed maximum of 11`, count <= 11);
+  assert(
+    `requested ${count} graph colors, more than the allowed maximum of 11`,
+    count <= 11
+  );
 
   let currentTheme = getCurrentTheme();
 
@@ -124,7 +132,7 @@ export function getColor(swatchName: string) {
   let currentTheme = getCurrentTheme();
   let { colors } = themeData.themes[currentTheme];
 
-  let cleanedName = swatchName.replace(/^--/, '');
+  let cleanedName = swatchName.replace(/^--/, "");
 
   let color = colors.find((color) => color.name === cleanedName);
 
@@ -134,7 +142,9 @@ export function getColor(swatchName: string) {
 }
 
 function getCurrentTheme() {
-  let theme = [...document.body.classList].find((a) => a.startsWith('theme')) || 'theme-light';
+  let theme =
+    [...document.body.classList].find((a) => a.startsWith("theme")) ||
+    "theme-light";
 
-  return theme.substring(6) as 'light' | 'dark';
+  return theme.substring(6) as "light" | "dark";
 }

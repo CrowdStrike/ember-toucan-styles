@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 
 const { resolve } = require;
 
 module.exports = {
-  presets: [resolve('@babel/preset-typescript')],
+  presets: [resolve("@babel/preset-typescript")],
   plugins: [
     [
-      resolve('@babel/plugin-transform-typescript'),
+      resolve("@babel/plugin-transform-typescript"),
       {
         allowDeclareFields: true,
         onlyRemoveTypeImports: true,
@@ -15,12 +15,12 @@ module.exports = {
       },
     ],
     [
-      resolve('@babel/plugin-proposal-decorators'),
+      resolve("@babel/plugin-proposal-decorators"),
       {
         // The stage 1 implementation
         legacy: true,
       },
     ],
-    [resolve('@babel/plugin-proposal-class-properties')],
+    [resolve("@babel/plugin-proposal-class-properties")],
   ],
 };

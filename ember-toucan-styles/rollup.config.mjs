@@ -1,15 +1,15 @@
 // @ts-nocheck
-import ts from 'rollup-plugin-ts';
-import copy from 'rollup-plugin-copy';
-import { defineConfig } from 'rollup';
+import ts from "rollup-plugin-ts";
+import copy from "rollup-plugin-copy";
+import { defineConfig } from "rollup";
 
-import { Addon } from '@embroider/addon-dev/rollup';
+import { Addon } from "@embroider/addon-dev/rollup";
 
-import themeData from '@crowdstrike/tailwind-toucan-base/themes' assert { type: 'json' };
+import themeData from "@crowdstrike/tailwind-toucan-base/themes" assert { type: "json" };
 
 const addon = new Addon({
-  srcDir: 'src',
-  destDir: 'dist',
+  srcDir: "src",
+  destDir: "dist",
 });
 
 export default defineConfig({
@@ -29,17 +29,17 @@ export default defineConfig({
     // These are the modules that users should be able to import from your
     // addon. Anything not listed here may get optimized away.
     addon.publicEntrypoints([
-      'index.ts',
-      'services/theme-manager.ts',
-      'test-support/index.ts',
-      'utils/colors.ts',
-      'utils/themes.ts',
+      "index.ts",
+      "services/theme-manager.ts",
+      "test-support/index.ts",
+      "utils/colors.ts",
+      "utils/themes.ts",
     ]),
 
     // These are the modules that should get reexported into the traditional
     // "app" tree. Things in here should also be in publicEntrypoints above, but
     // not everything in publicEntrypoints necessarily needs to go here.
-    addon.appReexports(['services/*.{js,ts}']),
+    addon.appReexports(["services/*.{js,ts}"]),
     // This babel config should *not* apply presets or compile away ES modules.
     // It exists only to provide development niceties for you, like automatic
     // template colocation.
@@ -48,10 +48,10 @@ export default defineConfig({
       // can be changed to swc or other transpilers later
       // but we need the ember plugins converted first
       // (template compilation and co-location)
-      transpiler: 'babel',
+      transpiler: "babel",
       transpileOnly: false,
       tsconfig: {
-        fileName: 'tsconfig.json',
+        fileName: "tsconfig.json",
         hook: (config) => ({
           ...config,
           declaration: true,
@@ -59,7 +59,7 @@ export default defineConfig({
           // See: https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#beta-delta
           // Allows us to use `exports` to define types per export
           // However, we can't use that feature until the minimum supported TS is 4.7+
-          declarationDir: './dist',
+          declarationDir: "./dist",
         }),
       },
     }),
@@ -74,7 +74,7 @@ export default defineConfig({
 
     // addons are allowed to contain imports of .css files, which we want rollup
     // to leave alone and keep in the published output.
-    addon.keepAssets(['**/*.css']),
+    addon.keepAssets(["**/*.css"]),
 
     // Remove leftover build artifacts when starting a new build.
     addon.clean(),
@@ -82,8 +82,8 @@ export default defineConfig({
     // Copy Readme and License into published package
     copy({
       targets: [
-        { src: '../README.md', dest: '.' },
-        { src: '../LICENSE.md', dest: '.' },
+        { src: "../README.md", dest: "." },
+        { src: "../LICENSE.md", dest: "." },
       ],
     }),
 
@@ -93,8 +93,8 @@ export default defineConfig({
     {
       generateBundle() {
         this.emitFile({
-          type: 'asset',
-          fileName: 'utils/theme-data.js',
+          type: "asset",
+          fileName: "utils/theme-data.js",
           source: `export default ${JSON.stringify(themeData)};`,
         });
       },

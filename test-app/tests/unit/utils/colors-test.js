@@ -12,7 +12,11 @@ module('Unit | Utils | Colors ', function (hooks) {
   test('it can retrieve a swatch colour', async function (assert) {
     let result = getColor('--lines-dark');
 
-    assert.strictEqual(result, '#d9d9d9', 'Colour of swatch 1 retrieved correctly');
+    assert.strictEqual(
+      result,
+      '#d9d9d9',
+      'Colour of swatch 1 retrieved correctly'
+    );
   });
 
   test('it complains on an invalid swatch name', function (assert) {
@@ -30,8 +34,16 @@ module('Unit | Utils | Colors ', function (hooks) {
 
     graphColors.forEach((color) => {
       assert.strictEqual(typeof color, 'object', 'color is an object');
-      assert.strictEqual(typeof color.swatchName, 'string', 'color object has a swatch name');
-      assert.strictEqual(typeof color.swatchClass, 'string', 'color object has a swatch class');
+      assert.strictEqual(
+        typeof color.swatchName,
+        'string',
+        'color object has a swatch name'
+      );
+      assert.strictEqual(
+        typeof color.swatchClass,
+        'string',
+        'color object has a swatch class'
+      );
     });
     assert.deepEqual(
       graphColors.map((item) => item.swatchName),
@@ -68,7 +80,10 @@ module('Unit | Utils | Colors ', function (hooks) {
     assert.expect(11);
 
     for (let i = 1; i <= 11; i++) {
-      assert.strictEqual(getGraphColors(i).length, new Set(getGraphColors(i)).size);
+      assert.strictEqual(
+        getGraphColors(i).length,
+        new Set(getGraphColors(i)).size
+      );
     }
   });
 });

@@ -1,17 +1,18 @@
-import { tracked } from '@glimmer/tracking';
-import { assert } from '@ember/debug';
-import { registerDestructor } from '@ember/destroyable';
-import { action } from '@ember/object';
-import Service, { inject as service } from '@ember/service';
+import { tracked } from "@glimmer/tracking";
+import { assert } from "@ember/debug";
+import { registerDestructor } from "@ember/destroyable";
+import { action } from "@ember/object";
+import Service, { inject as service } from "@ember/service";
 
-import { ALL_THEMES, DARK, LIGHT } from '../utils/themes';
+import { ALL_THEMES, DARK, LIGHT } from "../utils/themes";
 
-import type { Theme } from '../utils/themes';
-import type { LocalStorageService } from 'ember-browser-services/types';
+import type { Theme } from "../utils/themes";
+import type { LocalStorageService } from "ember-browser-services/types";
 
 export default class ThemeManagerService extends Service {
-  @service('browser/local-storage') declare storage: LocalStorageService;
-  private callbacks: Array<(theme: Theme, shouldSaveTheme: boolean) => void> = [];
+  @service("browser/local-storage") declare storage: LocalStorageService;
+  private callbacks: Array<(theme: Theme, shouldSaveTheme: boolean) => void> =
+    [];
 
   /**
    * @public
@@ -99,9 +100,12 @@ export default class ThemeManagerService extends Service {
    */
   @action
   setup(defaultTheme: Theme = LIGHT) {
-    assert('setup() was already called. To change theme, use selectTheme()', !this.isSetup);
+    assert(
+      "setup() was already called. To change theme, use selectTheme()",
+      !this.isSetup
+    );
 
-    let savedTheme = this.storage.getItem('current-theme') as Theme;
+    let savedTheme = this.storage.getItem("current-theme") as Theme;
 
     if (!ALL_THEMES.includes(savedTheme)) {
       savedTheme = defaultTheme;
@@ -151,7 +155,7 @@ export default class ThemeManagerService extends Service {
     document.body.classList.remove(...this.inactiveThemes);
 
     if (shouldSaveTheme) {
-      this.storage.setItem('current-theme', this.currentTheme);
+      this.storage.setItem("current-theme", this.currentTheme);
     }
 
     this.notifyThemeChange(shouldSaveTheme);
@@ -159,7 +163,9 @@ export default class ThemeManagerService extends Service {
 
   @action
   notifyThemeChange(shouldSaveTheme: boolean) {
-    this.callbacks.forEach((handler) => handler(this.currentTheme, shouldSaveTheme));
+    this.callbacks.forEach((handler) =>
+      handler(this.currentTheme, shouldSaveTheme)
+    );
   }
 
   /**
@@ -191,8 +197,8 @@ export default class ThemeManagerService extends Service {
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your services.
-declare module '@ember/service' {
+declare module "@ember/service" {
   interface Registry {
-    'theme-manager': ThemeManagerService;
+    "theme-manager": ThemeManagerService;
   }
 }

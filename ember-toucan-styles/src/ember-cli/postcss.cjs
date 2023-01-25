@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 
 const defaultTailwindConfig = {
-  presets: [require('@crowdstrike/tailwind-toucan-base')],
+  presets: [require("@crowdstrike/tailwind-toucan-base")],
 };
 
 function configureTailwind({
   tailwindConfig = defaultTailwindConfig,
-  ['ember-cli-postcss']: addonConfig = { compile: {} },
+  ["ember-cli-postcss"]: addonConfig = { compile: {} },
 } = {}) {
   return {
     postcssOptions: {
@@ -23,10 +23,10 @@ function configureTailwind({
         ...addonConfig.compile,
         // plugin order enforced
         plugins: [
-          require('postcss-import'),
-          require('tailwindcss')(tailwindConfig),
-          require('postcss-nested'),
-          require('autoprefixer'),
+          require("postcss-import"),
+          require("tailwindcss")(tailwindConfig),
+          require("postcss-nested"),
+          require("autoprefixer"),
         ],
       },
     },

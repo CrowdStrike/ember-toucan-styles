@@ -1,1 +1,1 @@
-export { setupThemeSupport } from './-private/themes';
+export { setupThemeSupport } from "./-private/themes";
