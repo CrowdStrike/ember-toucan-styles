@@ -5,8 +5,6 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const {
   configureCSSModules,
   configureTailwind,
-  // eslint doesn't know that we can require ourselves :D
-  // eslint-disable-next-line node/no-extraneous-require, node/no-missing-require
 } = require('@crowdstrike/ember-toucan-styles/ember-cli');
 
 /**

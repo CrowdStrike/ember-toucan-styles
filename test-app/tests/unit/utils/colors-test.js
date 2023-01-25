@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
 import { getColor, getGraphColors } from '@crowdstrike/ember-toucan-styles';
+
 import { setupThemeSupport } from '@crowdstrike/ember-toucan-styles/test-support';
 
 module('Unit | Utils | Colors ', function (hooks) {
