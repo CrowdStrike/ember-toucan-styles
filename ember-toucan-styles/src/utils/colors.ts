@@ -134,7 +134,9 @@ export function getColor(swatchName: string) {
 
   let cleanedName = swatchName.replace(/^--/, "");
 
-  let color = colors.find((color) => color.name === cleanedName);
+  assert(`Invalid theme: Colors not found for theme: ${currentTheme}. `, colors);
+
+  let color = [...colors].find((color) => color.name === cleanedName);
 
   assert(`Invalid swatch name supplied: '${swatchName}'`, color);
 
