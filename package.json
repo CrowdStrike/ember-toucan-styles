@@ -29,9 +29,11 @@
       "ignoreMissing": ["ember-cli-htmlbars"]
     },
     "overrides": {
+      "@types/eslint": "^8.0.0",
       "mustache": "^4.2.0"
     },
     "overrides-notes": {
+      "@types/eslint": "ember-template-lint brings in an old version of this package. This ends up breaking type-checking as webpack brings in a newer version.",
       "mustache": "ember-cli -> testem -> consolidate -> mustache is ancient"
     }
   }
