@@ -116,7 +116,7 @@ jobs:
       matrix:
         try-scenario:
           - ember-3.28
-          - ember-4.0.0
+          - ember-4.0
           - ember-4.4
           - ember-4.8
           - ember-release
