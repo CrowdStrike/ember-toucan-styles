@@ -23,7 +23,7 @@
     "test:ember": "ember test"
   },
   "dependencies": {
-    "@crowdstrike/ember-toucan-styles": "*",
+    "@crowdstrike/ember-toucan-styles": "2.0.0-beta.0",
     "ember-browser-services": "^4.0.3"
   },
   "devDependencies": {
