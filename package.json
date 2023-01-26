@@ -32,7 +32,6 @@
       "mustache": "^4.2.0"
     },
     "overrides-notes": {
-      "@types/eslint": "webpack brings in @types/eslint@8, which breaks our type checking",
       "mustache": "ember-cli -> testem -> consolidate -> mustache is ancient"
     }
   }
