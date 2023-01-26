@@ -1,3 +1,5 @@
+import '../scrollbar.css';
+
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { registerDestructor } from '@ember/destroyable';
