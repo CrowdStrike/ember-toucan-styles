@@ -265,6 +265,22 @@ Example:
 
 </details>
 
+### Scrollbar Styles
+
+To get toucan-themed scrollbars in browsers that support scrollbar customization
+
+```css
+/* some CSS file */
+@import '@crowdstrike/ember-toucan-styles/scollbar.css'
+```
+
+or if you have a bundling environment that supports adding CSS as part of the _module graph_,
+
+```js
+// some JavaScript or TypeScript file
+import '@crowdstrike/ember-toucan-styles/scrollbar.css';
+```
+
 ### Using a Custom Theme Manager
 
 #### Setup
