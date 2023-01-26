@@ -8,16 +8,15 @@
   "license": "MIT",
   "author": "CrowdStrike UX Team",
   "scripts": {
+    "release": "changeset publish",
     "dev": "concurrently 'npm:dev:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
-    "dev:ember": "pnpm run --filter ember-app start --port 0",
+    "dev:ember": "pnpm run --filter test-app start --port 0",
     "dev:addon": "pnpm run --filter @crowdstrike/ember-toucan-styles start --no-watch.clearScreen",
     "ci:update": "npx ember-ci-update",
     "lint:fix": "pnpm --filter '*' run lint:fix",
     "build": "pnpm run --filter @crowdstrike/ember-toucan-styles build"
   },
   "devDependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
     "concurrently": "7.2.1"
   },
   "volta": {
@@ -33,5 +32,9 @@
       "@types/eslint": "webpack brings in @types/eslint@8, which breaks our type checking",
       "mustache": "ember-cli -> testem -> consolidate -> mustache is ancient"
     }
+  },
+  "dependencies": {
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.0"
   }
 }
