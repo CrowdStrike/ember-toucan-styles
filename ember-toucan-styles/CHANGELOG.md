@@ -14,10 +14,13 @@
 
 - [#13](https://github.com/CrowdStrike/ember-toucan-styles/pull/13) [`d2c4393`](https://github.com/CrowdStrike/ember-toucan-styles/commit/d2c4393114e8a479c4e94e0275232232e16842a6) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - (internal): swap semantic-release for Changesets so that we can have more granular control over releases, and batch breaking changes together without massive PRs
 
-- [#12](https://github.com/CrowdStrike/ember-toucan-styles/pull/12) [`273c7d6`](https://github.com/CrowdStrike/ember-toucan-styles/commit/273c7d681658233554d4825f6dfbfa1c3c896353) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - This is a breaking change is it requires that consumers have a way to properly resolve side-affecting CSS imports
-  (this is commonplace in many webpack and vite apps though).
 
-  (ember-auto-import and embroider)-based ember apps support this out of the box.
+**The following changes were reverted and are not present in 2.0.0**
+
+- [#12](https://github.com/CrowdStrike/ember-toucan-styles/pull/12) [`273c7d6`](https://github.com/CrowdStrike/ember-toucan-styles/commit/273c7d681658233554d4825f6dfbfa1c3c896353) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - This is a breaking change is it requires that consumers have a way to properly resolve side-effecting CSS imports
+    - This was reverted because it's not possible to have a side-effecting import in a way that doesn't introduce footguns when it comes to tree shaking, svelting unused modules, etc. There were too many caveats.
+
+  (ember-auto-import and embroider)-based ember apps support CSS-imports out of the box.
 
   Here is a tutorial on setting up Tailwind 3 + JIT, CSS imports, and (optionally) CSS-Modules, for those interested https://discuss.emberjs.com/t/ember-modern-css/19614
 
