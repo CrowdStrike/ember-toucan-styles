@@ -24,6 +24,7 @@ export function setupThemeSupport(hooks: NestedHooks) {
     let classes = document.body.classList.values();
 
     document.body.classList.remove(...classes);
+    document.documentElement.style.removeProperty('color-scheme');
 
     if (originalClasses) {
       document.body.classList.add(...originalClasses);

@@ -107,9 +107,7 @@ export default class ThemeManagerService extends Service {
       savedTheme = defaultTheme;
     }
 
-    this.currentTheme = savedTheme || defaultTheme;
-
-    document.body.classList.add(this.currentTheme);
+    this._selectTheme(savedTheme);
 
     this.notifyThemeChange(false);
     this.isSetup = true;
@@ -144,17 +142,31 @@ export default class ThemeManagerService extends Service {
    */
   @action
   selectTheme(theme: Theme, { shouldSaveTheme = true } = {}) {
-    document.body.classList.add(theme);
-
-    this.currentTheme = theme;
-
-    document.body.classList.remove(...this.inactiveThemes);
+    this._selectTheme(theme);
 
     if (shouldSaveTheme) {
       this.storage.setItem('current-theme', this.currentTheme);
     }
 
     this.notifyThemeChange(shouldSaveTheme);
+  }
+
+  private _selectTheme(theme: Theme) {
+    document.body.classList.add(theme);
+
+    /**
+     * Sync the color scheme:
+     *   https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
+     */
+    if (theme === DARK) {
+      document.documentElement.style.setProperty('color-scheme', 'dark ');
+    } else {
+      document.documentElement.style.removeProperty('color-scheme');
+    }
+
+    this.currentTheme = theme;
+
+    document.body.classList.remove(...this.inactiveThemes);
   }
 
   @action

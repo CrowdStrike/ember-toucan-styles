@@ -1,3 +1,7 @@
+# Not ready for linting
+*.gjs
+*.gts
+
 # unconventional js
 /blueprints/*/files/
 /vendor/
