@@ -5,8 +5,6 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const {
   configureCSSModules,
   configureTailwind,
-  // eslint doesn't know that we can require ourselves :D
-  // eslint-disable-next-line node/no-extraneous-require, node/no-missing-require
 } = require('@crowdstrike/ember-toucan-styles/ember-cli');
 
 /**
@@ -15,11 +13,11 @@ const {
 console.debug({ configureTailwind, configureCSSModules });
 
 module.exports = function (defaults) {
-  let buildParams = {
-    ...configureTailwind(),
-  };
-
-  let app = new EmberApp(defaults, buildParams);
+  let app = new EmberApp(defaults, {
+    'ember-cli-babel': {
+      enableTypeScriptTransform: true,
+    },
+  });
 
   /*
     This build file specifies the options for the dummy test app of this

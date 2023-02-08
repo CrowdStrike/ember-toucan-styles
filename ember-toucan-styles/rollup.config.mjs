@@ -1,8 +1,11 @@
 // @ts-nocheck
 import ts from 'rollup-plugin-ts';
+import copy from 'rollup-plugin-copy';
 import { defineConfig } from 'rollup';
 
 import { Addon } from '@embroider/addon-dev/rollup';
+
+import themes from '@crowdstrike/tailwind-toucan-base/themes' assert { type: 'json' };
 
 const addon = new Addon({
   srcDir: 'src',
@@ -16,27 +19,22 @@ export default defineConfig({
       usePolling: true,
     },
   },
-  output: {
-    ...addon.output(),
-    sourcemap: true,
-    // Needed due to bug in ember-cli-htmlbars removal in consuming apps
-    hoistTransitiveImports: false,
-  },
+  output: addon.output(),
   plugins: [
     // These are the modules that users should be able to import from your
     // addon. Anything not listed here may get optimized away.
     addon.publicEntrypoints([
-      'index.ts',
-      'services/theme-manager.ts',
-      'test-support/index.ts',
-      'utils/colors.ts',
-      'utils/themes.ts',
+      'index.js',
+      'services/theme-manager.js',
+      'test-support/index.js',
+      'utils/colors.js',
+      'utils/themes.js',
     ]),
 
     // These are the modules that should get reexported into the traditional
     // "app" tree. Things in here should also be in publicEntrypoints above, but
     // not everything in publicEntrypoints necessarily needs to go here.
-    addon.appReexports(['services/*.{js,ts}']),
+    addon.appReexports(['services/*.js']),
     // This babel config should *not* apply presets or compile away ES modules.
     // It exists only to provide development niceties for you, like automatic
     // template colocation.
@@ -74,6 +72,14 @@ export default defineConfig({
 
     addon.clean(),
 
+    // Copy Readme and License into published package
+    copy({
+      targets: [
+        { src: '../README.md', dest: '.' },
+        { src: '../LICENSE.md', dest: '.' },
+      ],
+    }),
+
     /**
      * We import this file to have direct access to color and spacing information
      */
@@ -82,9 +88,7 @@ export default defineConfig({
         this.emitFile({
           type: 'asset',
           fileName: 'utils/theme-data.js',
-          source: `export default ${JSON.stringify(
-            require('@crowdstrike/tailwind-toucan-base/themes')
-          )};`,
+          source: `export default ${JSON.stringify(themes)};`,
         });
       },
     },

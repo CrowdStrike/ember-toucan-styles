@@ -3,6 +3,7 @@ import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
 import { THEMES } from '@crowdstrike/ember-toucan-styles';
+
 import { setupThemeSupport } from '@crowdstrike/ember-toucan-styles/test-support';
 import { setupBrowserFakes } from 'ember-browser-services/test-support';
 
