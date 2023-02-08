@@ -19,7 +19,6 @@
     "./utils/themes": "./dist/utils/themes.js",
     "./ember-cli": "./src/ember-cli/index.cjs",
     "./test-support": "./dist/test-support/index.js",
-    "./scrollbar.css": "./dist/scrollbar.css",
     "./*": "./dist/*"
   },
   "typesVersions": {
@@ -55,9 +54,7 @@
   "dependencies": {
     "@crowdstrike/tailwind-toucan-base": "^3.1.1",
     "@embroider/addon-shim": "^1.7.1",
-    "ember-browser-services": "^4.0.4",
-    "postcss": "^8.0.0",
-    "postcss-import": "^14.1.0"
+    "ember-browser-services": "^4.0.3"
   },
   "peerDependencies": {
     "@glimmer/tracking": "^1.1.2",
