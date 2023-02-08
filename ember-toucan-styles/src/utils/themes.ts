@@ -9,4 +9,4 @@ export const THEMES = {
 export const ALL_THEMES = Object.values(THEMES);
 
 type ThemeKey = keyof typeof THEMES;
-export type Theme = typeof THEMES[ThemeKey];
+export type Theme = (typeof THEMES)[ThemeKey];
