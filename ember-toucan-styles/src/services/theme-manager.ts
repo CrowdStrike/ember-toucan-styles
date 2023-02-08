@@ -11,8 +11,7 @@ import type { LocalStorageService } from 'ember-browser-services/types';
 
 export default class ThemeManagerService extends Service {
   @service('browser/local-storage') declare storage: LocalStorageService;
-  private callbacks: Array<(theme: Theme, shouldSaveTheme: boolean) => void> =
-    [];
+  private callbacks: Array<(theme: Theme, shouldSaveTheme: boolean) => void> = [];
 
   /**
    * @public
@@ -100,10 +99,7 @@ export default class ThemeManagerService extends Service {
    */
   @action
   setup(defaultTheme: Theme = LIGHT) {
-    assert(
-      'setup() was already called. To change theme, use selectTheme()',
-      !this.isSetup
-    );
+    assert('setup() was already called. To change theme, use selectTheme()', !this.isSetup);
 
     let savedTheme = this.storage.getItem('current-theme') as Theme;
 
@@ -163,9 +159,7 @@ export default class ThemeManagerService extends Service {
 
   @action
   notifyThemeChange(shouldSaveTheme: boolean) {
-    this.callbacks.forEach((handler) =>
-      handler(this.currentTheme, shouldSaveTheme)
-    );
+    this.callbacks.forEach((handler) => handler(this.currentTheme, shouldSaveTheme));
   }
 
   /**

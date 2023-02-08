@@ -70,26 +70,18 @@ export function getSeverityColorClass(severityId: number) {
 export function getSeverityNameColorClass(
   severity: (typeof SEVERITY_COLORS)[keyof typeof SEVERITY_COLORS]
 ) {
-  return getSeverityColorClass(
-    Object.values(SEVERITY_COLORS).findIndex((s) => s === severity)
-  );
+  return getSeverityColorClass(Object.values(SEVERITY_COLORS).findIndex((s) => s === severity));
 }
 
 // gets a colour scale with max contrast for a given number of items
 export function getColorScale(numItems: number) {
   let numColors = GRAPH_COLORS.length;
 
-  return Array.from(
-    { length: numItems },
-    (_, i) => GRAPH_COLORS[(i + 3) % numColors]
-  );
+  return Array.from({ length: numItems }, (_, i) => GRAPH_COLORS[(i + 3) % numColors]);
 }
 
 export function getGraphColors(count = 11) {
-  assert(
-    `requested ${count} graph colors, more than the allowed maximum of 11`,
-    count <= 11
-  );
+  assert(`requested ${count} graph colors, more than the allowed maximum of 11`, count <= 11);
 
   let currentTheme = getCurrentTheme();
 
@@ -139,9 +131,7 @@ export function getColor(swatchName: string) {
   // Widen the type of `colors` for this particular use case.
   // `colors` is a _specific_ type for the entire JSON document, allowing hi-fi intellisense.
   // For this function though, we don't care about that level of fidelity.
-  let color = (colors as ColorInfo[]).find(
-    (color) => color.name === cleanedName
-  );
+  let color = (colors as ColorInfo[]).find((color) => color.name === cleanedName);
 
   assert(`Invalid swatch name supplied: '${swatchName}'`, color);
 
@@ -149,9 +139,7 @@ export function getColor(swatchName: string) {
 }
 
 function getCurrentTheme() {
-  let theme =
-    [...document.body.classList].find((a) => a.startsWith('theme')) ||
-    'theme-light';
+  let theme = [...document.body.classList].find((a) => a.startsWith('theme')) || 'theme-light';
 
   return theme.substring(6) as 'light' | 'dark';
 }
