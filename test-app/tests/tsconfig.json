@@ -12,8 +12,5 @@
     }
   },
   "include": [".", "../types"],
-  "references": [
-    { "path": "../addon" },
-    { "path": "../addon-test-support" }
-  ]
+  "references": [{ "path": "../addon" }, { "path": "../addon-test-support" }]
 }

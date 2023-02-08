@@ -5,7 +5,7 @@ import { defineConfig } from 'rollup';
 
 import { Addon } from '@embroider/addon-dev/rollup';
 
-import themes from '@crowdstrike/tailwind-toucan-base/themes' assert { type: "json" };
+import themes from '@crowdstrike/tailwind-toucan-base/themes' assert { type: 'json' };
 
 const addon = new Addon({
   srcDir: 'src',

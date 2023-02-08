@@ -3,6 +3,7 @@ import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
 import { THEMES } from '@crowdstrike/ember-toucan-styles';
+
 import { setupThemeSupport } from '@crowdstrike/ember-toucan-styles/test-support';
 import { setupBrowserFakes } from 'ember-browser-services/test-support';
 
@@ -62,25 +63,28 @@ module('Service | ThemeManager', function (hooks) {
       });
     });
 
-    module('The saved theme is different from the default theme', function (hooks) {
-      hooks.beforeEach(function () {
-        let localStorage = this.owner.lookup('service:browser/local-storage');
+    module(
+      'The saved theme is different from the default theme',
+      function (hooks) {
+        hooks.beforeEach(function () {
+          let localStorage = this.owner.lookup('service:browser/local-storage');
 
-        localStorage.setItem('current-theme', THEMES.DARK);
-      });
+          localStorage.setItem('current-theme', THEMES.DARK);
+        });
 
-      test('saved theme is applied to the body element', function (assert) {
-        service.setup();
+        test('saved theme is applied to the body element', function (assert) {
+          service.setup();
 
-        assert.true(document.body.classList.toString().includes(THEMES.DARK));
-      });
+          assert.true(document.body.classList.toString().includes(THEMES.DARK));
+        });
 
-      test('currentTheme is updated', function (assert) {
-        service.setup();
+        test('currentTheme is updated', function (assert) {
+          service.setup();
 
-        assert.strictEqual(service.currentTheme, THEMES.DARK);
-      });
-    });
+          assert.strictEqual(service.currentTheme, THEMES.DARK);
+        });
+      }
+    );
   });
 
   module('#selectTheme', function (hooks) {
