@@ -29,10 +29,10 @@
   "packageManager": "pnpm@7.1.9",
   "pnpm": {
     "overrides": {
-      "@types/eslint": "7.29.0"
+      "@types/eslint": "^8.0.0"
     },
     "overrides-notes": {
-      "@types/eslint": "webpack brings in @types/eslint@8, which breaks our type checking"
+      "@types/eslint": "the lint todo formatter brings in an old version of this package"
     }
   }
 }
