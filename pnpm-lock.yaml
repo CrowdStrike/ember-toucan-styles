@@ -112,7 +112,6 @@ importers:
       '@glimmer/component': ^1.0.4
       '@glimmer/tracking': ^1.0.4
       '@types/ember': ^4.0.0
-      '@types/ember-qunit': ^5.0.0
       '@types/ember-resolver': ^5.0.11
       '@types/ember__application': ^4.0.0
       '@types/ember__array': ^4.0.1
@@ -129,7 +128,6 @@ importers:
       '@types/ember__string': ^3.0.9
       '@types/ember__template': ^4.0.0
       '@types/ember__test': ^4.0.0
-      '@types/ember__test-helpers': ^2.6.1
       '@types/ember__utils': ^4.0.0
       '@types/htmlbars-inline-precompile': ^3.0.0
       '@types/qunit': ^2.19.0
@@ -188,7 +186,6 @@ importers:
       '@glimmer/component': 1.1.2_@babel+core@7.18.2
       '@glimmer/tracking': 1.1.2
       '@types/ember': 4.0.3_@babel+core@7.18.2
-      '@types/ember-qunit': 5.0.2_bdyvyhplqhyiliinndnzob5ouq
       '@types/ember-resolver': 5.0.13_@babel+core@7.18.2
       '@types/ember__application': 4.0.5_@babel+core@7.18.2
       '@types/ember__array': 4.0.3_@babel+core@7.18.2
@@ -205,7 +202,6 @@ importers:
       '@types/ember__string': 3.0.10
       '@types/ember__template': 4.0.1
       '@types/ember__test': 4.0.1_@babel+core@7.18.2
-      '@types/ember__test-helpers': 2.9.1_bdyvyhplqhyiliinndnzob5ouq
       '@types/ember__utils': 4.0.2_@babel+core@7.18.2
       '@types/htmlbars-inline-precompile': 3.0.0
       '@types/qunit': 2.19.4
@@ -3477,20 +3473,6 @@ packages:
       '@types/node': 18.13.0
     dev: true
 
-  /@types/ember-qunit/5.0.2_bdyvyhplqhyiliinndnzob5ouq:
-    resolution: {integrity: sha512-LXp0Ew4wPhaCMuw49cNDHWs/bROn+Msb4ypMG1t60EMBx0UaEoX0tZlkf5bQJfdD249WZTu5cCtKvl47xbQzxA==}
-    dependencies:
-      '@types/ember-resolver': 5.0.13_@babel+core@7.18.2
-      '@types/ember__test': 4.0.1_@babel+core@7.18.2
-      '@types/ember__test-helpers': 2.9.1_bdyvyhplqhyiliinndnzob5ouq
-      '@types/qunit': 2.19.4
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@glint/template'
-      - ember-source
-      - supports-color
-    dev: true
-
   /@types/ember-resolver/5.0.13_@babel+core@7.18.2:
     resolution: {integrity: sha512-pO964cAPhAaFJoS28M8+b5MzAhQ/tVuNM4GDUIAexheQat36axG2WTG8LQ5ea07MSFPesrRFk2T3z88pfvdYKA==}
     dependencies:
@@ -3685,18 +3667,6 @@ packages:
 
   /@types/ember__template/4.0.1:
     resolution: {integrity: sha512-hAxzdJa0zNvZSoHoCbtd0KGt6Dls4Aph9EwdtbUcdnlMiSUtEDUdKTtDbUrysqJjxGBr4vWIdJEqWtZ0/Y8KBw==}
-    dev: true
-
-  /@types/ember__test-helpers/2.9.1_bdyvyhplqhyiliinndnzob5ouq:
-    resolution: {integrity: sha512-KZ6jYr0ZiQHlklLcfyuy1j+FkvygEayf5mZ9FcaSOahw9ghK3K5TYSRDCuIBELRw//OB/WP9J7v9NduFRNfRgg==}
-    deprecated: This is a stub types definition. @ember/test-helpers provides its own type definitions, so you do not need this installed.
-    dependencies:
-      '@ember/test-helpers': 2.9.3_bdyvyhplqhyiliinndnzob5ouq
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@glint/template'
-      - ember-source
-      - supports-color
     dev: true
 
   /@types/ember__test/4.0.1_@babel+core@7.18.2:
