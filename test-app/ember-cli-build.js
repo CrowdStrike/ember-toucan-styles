@@ -13,11 +13,11 @@ const {
 console.debug({ configureTailwind, configureCSSModules });
 
 module.exports = function (defaults) {
-  let buildParams = {
-    ...configureTailwind(),
-  };
-
-  let app = new EmberApp(defaults, buildParams);
+  let app = new EmberApp(defaults, {
+    'ember-cli-babel': {
+      enableTypeScriptTransform: true,
+    },
+  });
 
   /*
     This build file specifies the options for the dummy test app of this

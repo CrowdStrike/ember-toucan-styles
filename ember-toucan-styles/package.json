@@ -47,7 +47,6 @@
     "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "lint:types": "glint",
     "lint:prettier": "prettier -c .",
     "lint:prettier:fix": "prettier -w .",
     "test": "echo 'Addon does not have tests, run tests in test-app'",

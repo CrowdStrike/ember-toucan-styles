@@ -18,7 +18,6 @@
     "lint:js": "eslint . --cache",
     "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
     "lint:js:fix": "eslint . --fix",
-    "lint:types": "glint",
     "lint:prettier": "prettier -c .",
     "lint:prettier:fix": "prettier -w .",
     "start": "ember serve",
