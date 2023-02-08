@@ -1,8 +1,11 @@
 // @ts-nocheck
 import ts from 'rollup-plugin-ts';
+import copy from 'rollup-plugin-copy';
 import { defineConfig } from 'rollup';
 
 import { Addon } from '@embroider/addon-dev/rollup';
+
+import themes from '@crowdstrike/tailwind-toucan-base/themes' assert { type: "json" };
 
 const addon = new Addon({
   srcDir: 'src',
@@ -69,6 +72,14 @@ export default defineConfig({
 
     addon.clean(),
 
+    // Copy Readme and License into published package
+    copy({
+      targets: [
+        { src: '../README.md', dest: '.' },
+        { src: '../LICENSE.md', dest: '.' },
+      ],
+    }),
+
     /**
      * We import this file to have direct access to color and spacing information
      */
@@ -77,9 +88,7 @@ export default defineConfig({
         this.emitFile({
           type: 'asset',
           fileName: 'utils/theme-data.js',
-          source: `export default ${JSON.stringify(
-            require('@crowdstrike/tailwind-toucan-base/themes')
-          )};`,
+          source: `export default ${JSON.stringify(themes)};`,
         });
       },
     },

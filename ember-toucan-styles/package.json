@@ -41,9 +41,7 @@
   ],
   "scripts": {
     "start": "pnpm watch:js",
-    "build": "concurrently 'npm:build:*'",
-    "build:js": "rollup -c ./rollup.config.js",
-    "build:docs": "cp ../README.md ./README.md",
+    "build": "rollup -c ./rollup.config.mjs",
     "watch:js": "rollup -c --watch --no-watch.clearScreen",
     "lint": "concurrently 'npm:lint:js'",
     "lint:fix": "concurrently 'npm:lint:js:fix'",

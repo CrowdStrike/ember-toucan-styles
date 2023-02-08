@@ -1,6 +1,6 @@
 import { assert } from '@ember/debug';
 
-import themeData from '@crowdstrike/tailwind-toucan-base/theme-data';
+import themeData, { ColorInfo } from '@crowdstrike/tailwind-toucan-base/theme-data';
 
 export const SEVERITY_COLORS = {
   INFORMATIONAL: 'informational',
@@ -126,7 +126,10 @@ export function getColor(swatchName: string) {
 
   let cleanedName = swatchName.replace(/^--/, '');
 
-  let color = colors.find((color) => color.name === cleanedName);
+  // Widen the type of `colors` for this particular use case.
+  // `colors` is a _specific_ type for the entire JSON document, allowing hi-fi intellisense.
+  // For this function though, we don't care about that level of fidelity.
+  let color = (colors as ColorInfo[]).find((color) => color.name === cleanedName);
 
   assert(`Invalid swatch name supplied: '${swatchName}'`, color);
 
