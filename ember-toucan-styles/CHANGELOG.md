@@ -1,5 +1,29 @@
 # `@crowdstrike/ember-toucan-styles`
 
+## 2.0.0
+
+### Major Changes
+
+- [#13](https://github.com/CrowdStrike/ember-toucan-styles/pull/13) [`ad21ab5`](https://github.com/CrowdStrike/ember-toucan-styles/commit/ad21ab56f9ad51b385d6616795aacfb1df7ff741) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Drop support for Ember < 3.28.
+
+  Add support for:
+
+  - Ember 4.8
+  - TypeScript 4.8
+  - TypeScript 4.9
+
+- [#13](https://github.com/CrowdStrike/ember-toucan-styles/pull/13) [`d2c4393`](https://github.com/CrowdStrike/ember-toucan-styles/commit/d2c4393114e8a479c4e94e0275232232e16842a6) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - (internal): swap semantic-release for Changesets so that we can have more granular control over releases, and batch breaking changes together without massive PRs
+
+### Patch Changes
+
+- [#17](https://github.com/CrowdStrike/ember-toucan-styles/pull/17) [`6f7c085`](https://github.com/CrowdStrike/ember-toucan-styles/commit/6f7c0852ba99fe06189298f81fe6aa03d864bf24) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - Fix scrollbar contrast when darkmode is active by flipping [color-scheme][mdn-color-scheme]
+  to `dark`.
+
+  Previously, the browser would retain the "normal" color scheme contrast of the scrollbar, which
+  is good for light-mode themes.
+
+  [mdn-color-scheme]: https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
+
 ## 2.0.0-beta.0
 
 ### Major Changes
@@ -14,11 +38,11 @@
 
 - [#13](https://github.com/CrowdStrike/ember-toucan-styles/pull/13) [`d2c4393`](https://github.com/CrowdStrike/ember-toucan-styles/commit/d2c4393114e8a479c4e94e0275232232e16842a6) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - (internal): swap semantic-release for Changesets so that we can have more granular control over releases, and batch breaking changes together without massive PRs
 
-
 **The following changes were reverted and are not present in 2.0.0**
 
 - [#12](https://github.com/CrowdStrike/ember-toucan-styles/pull/12) [`273c7d6`](https://github.com/CrowdStrike/ember-toucan-styles/commit/273c7d681658233554d4825f6dfbfa1c3c896353) Thanks [@NullVoxPopuli](https://github.com/NullVoxPopuli)! - This is a breaking change is it requires that consumers have a way to properly resolve side-effecting CSS imports
-    - This was reverted because it's not possible to have a side-effecting import in a way that doesn't introduce footguns when it comes to tree shaking, svelting unused modules, etc. There were too many caveats.
+
+  - This was reverted because it's not possible to have a side-effecting import in a way that doesn't introduce footguns when it comes to tree shaking, svelting unused modules, etc. There were too many caveats.
 
   (ember-auto-import and embroider)-based ember apps support CSS-imports out of the box.
 
