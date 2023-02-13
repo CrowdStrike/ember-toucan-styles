@@ -10,6 +10,6 @@ export default class ThemeToggler extends Component {
   </template>
 
   toggle = () => {
-    document.body.classList.toggle('has-scrollbars-always');
+    document.documentElement.classList.toggle('has-scrollbars-always');
   }
 }
