@@ -34,6 +34,10 @@ module('Service | ThemeManager', function (hooks) {
     test('isThemeSwitchingEnabled', function (assert) {
       assert.true(service.isThemeSwitchingEnabled);
     });
+
+    test('the browser color-scheme is set to normal', function (assert) {
+      assert.strictEqual(window.getComputedStyle(document.documentElement).colorScheme, 'normal');
+    });
   });
 
   module('#setup', function (hooks) {
@@ -54,12 +58,14 @@ module('Service | ThemeManager', function (hooks) {
         service.setup();
 
         assert.true(document.body.classList.toString().includes(THEMES.LIGHT));
+        assert.strictEqual(window.getComputedStyle(document.documentElement).colorScheme, 'normal');
       });
 
       test('can specify a custom default', function (assert) {
         service.setup(THEMES.DARK);
 
         assert.true(document.body.classList.toString().includes(THEMES.DARK));
+        assert.strictEqual(window.getComputedStyle(document.documentElement).colorScheme, 'dark');
       });
     });
 
@@ -96,12 +102,15 @@ module('Service | ThemeManager', function (hooks) {
     test('theme can be explicitly chosen', function (assert) {
       service.selectTheme(THEMES.LIGHT);
       assert.strictEqual(service.currentTheme, THEMES.LIGHT);
+      assert.strictEqual(window.getComputedStyle(document.documentElement).colorScheme, 'normal');
 
       service.selectTheme(THEMES.DARK);
       assert.strictEqual(service.currentTheme, THEMES.DARK);
+      assert.strictEqual(window.getComputedStyle(document.documentElement).colorScheme, 'dark');
 
       service.selectTheme(THEMES.DARK);
       assert.strictEqual(service.currentTheme, THEMES.DARK);
+      assert.strictEqual(window.getComputedStyle(document.documentElement).colorScheme, 'dark');
     });
 
     test('theme is persisted to localStorage', function (assert) {
@@ -118,12 +127,15 @@ module('Service | ThemeManager', function (hooks) {
       let service = this.owner.lookup('service:theme-manager');
 
       assert.strictEqual(service.currentTheme, THEMES.LIGHT);
+      assert.strictEqual(window.getComputedStyle(document.documentElement).colorScheme, 'normal');
 
       service.toggleTheme();
       assert.strictEqual(service.currentTheme, THEMES.DARK);
+      assert.strictEqual(window.getComputedStyle(document.documentElement).colorScheme, 'dark');
 
       service.toggleTheme();
       assert.strictEqual(service.currentTheme, THEMES.LIGHT);
+      assert.strictEqual(window.getComputedStyle(document.documentElement).colorScheme, 'normal');
     });
   });
 

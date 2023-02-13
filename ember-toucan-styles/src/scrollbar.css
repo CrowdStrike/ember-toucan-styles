@@ -15,7 +15,7 @@ Chrome custom scrollbars (hasn't implemented spec)
 https://webkit.org/blog/363/styling-scrollbars/
 https://css-tricks.com/the-current-state-of-styling-scrollbars/
 
-.has-scrollbars-always is added @crowdstrike/ui/routes/application
+.has-scrollbars-always is manually added at application boot time
 */
 .has-scrollbars-always ::-webkit-scrollbar {
   height: 0.75rem; /* vertical */
