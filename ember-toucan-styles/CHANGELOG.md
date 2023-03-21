@@ -1,5 +1,11 @@
 # `@crowdstrike/ember-toucan-styles`
 
+## 2.0.1
+
+### Patch Changes
+
+- [#21](https://github.com/CrowdStrike/ember-toucan-styles/pull/21) [`3262755`](https://github.com/CrowdStrike/ember-toucan-styles/commit/3262755df4639ff1573c53aa811c556bc3ae0d4b) Thanks [@ynotdraw](https://github.com/ynotdraw)! - Updated @crowdstrike/tailwind-toucan-base dependency [to latest](https://github.com/CrowdStrike/tailwind-toucan-base/releases/tag/v3.4.0) and resolved missing peer dependencies.
+
 ## 2.0.0
 
 ### Major Changes
