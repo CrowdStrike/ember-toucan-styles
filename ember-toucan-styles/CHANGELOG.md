@@ -1,5 +1,11 @@
 # `@crowdstrike/ember-toucan-styles`
 
+## 2.0.2
+
+### Patch Changes
+
+- [#23](https://github.com/CrowdStrike/ember-toucan-styles/pull/23) [`23918e8`](https://github.com/CrowdStrike/ember-toucan-styles/commit/23918e897216ac956a46915d22f89519c41e1cf3) Thanks [@mfurniss](https://github.com/mfurniss)! - Updated color matrix to match current design spec
+
 ## 2.0.1
 
 ### Patch Changes
