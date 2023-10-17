@@ -27,7 +27,7 @@
     "lint:prettier": "prettier -c ."
   },
   "dependencies": {
-    "@crowdstrike/tailwind-toucan-base": "^3.4.0",
+    "@crowdstrike/tailwind-toucan-base": "^4.3.0",
     "@crowdstrike/ember-toucan-styles": "workspace:../ember-toucan-styles",
     "ember-browser-services": "^4.0.3"
   },
