@@ -52,7 +52,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@crowdstrike/tailwind-toucan-base": "^3.4.0",
+    "@crowdstrike/tailwind-toucan-base": "^4.3.0",
     "@embroider/addon-shim": "^1.7.1",
     "ember-browser-services": "^4.0.3"
   },

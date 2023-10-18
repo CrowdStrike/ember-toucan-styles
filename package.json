@@ -24,9 +24,10 @@
     "@changesets/cli": "^2.26.0"
   },
   "volta": {
-    "node": "16.15.1"
+    "node": "16.15.1",
+    "pnpm": "7.3.0"
   },
-  "packageManager": "pnpm@7.1.9",
+  "packageManager": "pnpm@7.3.0",
   "pnpm": {
     "overrides": {
       "@types/eslint": "^8.0.0"
