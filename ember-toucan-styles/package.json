@@ -1,6 +1,6 @@
 {
   "name": "@crowdstrike/ember-toucan-styles",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "The styles for the CrowdStrike Toucan Design System",
   "private": false,
   "keywords": [
