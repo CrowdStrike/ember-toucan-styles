@@ -9,6 +9,27 @@ import { ALL_THEMES, DARK, LIGHT } from '../utils/themes';
 import type { Theme } from '../utils/themes';
 import type { LocalStorageService } from 'ember-browser-services/types';
 
+class DocumentMediator {
+  get classList() {
+    return this._classListGetter();
+  }
+  
+  get style() {
+    return this._styleGetter();
+  }
+  
+  constructor(
+    private _classListGetter: () => DOMTokenList,
+    private _styleGetter: () => CSSStyleDeclaration,
+  ) {}
+  
+  static for(root: HTMLDocument | HTMLElement) {
+    return root instanceof HTMLDocument
+      ? new DocumentMediator(() => root.body.classList, () => root.documentElement.style)
+      : new DocumentMediator(() => root.classList, () => root.style);
+  }
+}
+
 export default class ThemeManagerService extends Service {
   @service('browser/local-storage') declare storage: LocalStorageService;
   private callbacks: Array<(theme: Theme, shouldSaveTheme: boolean) => void> = [];
@@ -60,11 +81,11 @@ export default class ThemeManagerService extends Service {
    *
    * @param {THEMES} theme
    */
-  forceSelectTheme(theme: Theme) {
+  forceSelectTheme(theme: Theme, doc = document) {
     this._previouslySelectedTheme = this.currentTheme;
     this._previousIsThemeSwitchingEnabled = this.isThemeSwitchingEnabled;
     this.isThemeSwitchingEnabled = false;
-    this.selectTheme(theme, { shouldSaveTheme: false });
+    this.selectTheme(theme, { shouldSaveTheme: false, doc });
   }
 
   /**
@@ -75,9 +96,9 @@ export default class ThemeManagerService extends Service {
    *
    * @param {THEMES} theme
    */
-  clearForceSelectedTheme() {
+  clearForceSelectedTheme(doc = document) {
     this.isThemeSwitchingEnabled = this._previousIsThemeSwitchingEnabled;
-    this.selectTheme(this._previouslySelectedTheme, { shouldSaveTheme: false });
+    this.selectTheme(this._previouslySelectedTheme, { shouldSaveTheme: false, doc });
   }
 
   registerThemeSwitchListener(callback: (theme: Theme) => void) {
@@ -98,7 +119,7 @@ export default class ThemeManagerService extends Service {
    * @param {THEMES} defaultTheme
    */
   @action
-  setup(defaultTheme: Theme = LIGHT) {
+  setup(defaultTheme: Theme = LIGHT, doc = document) {
     assert('setup() was already called. To change theme, use selectTheme()', !this.isSetup);
 
     let savedTheme = this.storage.getItem('current-theme') as Theme;
@@ -107,7 +128,7 @@ export default class ThemeManagerService extends Service {
       savedTheme = defaultTheme;
     }
 
-    this._selectTheme(savedTheme);
+    this._selectTheme(savedTheme, doc);
 
     this.notifyThemeChange(false);
     this.isSetup = true;
@@ -141,8 +162,8 @@ export default class ThemeManagerService extends Service {
    * @property {Boolean} shouldSaveTheme - flag to control if the theme change should be persisted to localStorage
    */
   @action
-  selectTheme(theme: Theme, { shouldSaveTheme = true } = {}) {
-    this._selectTheme(theme);
+  selectTheme(theme: Theme, { shouldSaveTheme = true, doc = document } = {}) {
+    this._selectTheme(theme, doc);
 
     if (shouldSaveTheme) {
       this.storage.setItem('current-theme', this.currentTheme);
@@ -151,22 +172,24 @@ export default class ThemeManagerService extends Service {
     this.notifyThemeChange(shouldSaveTheme);
   }
 
-  private _selectTheme(theme: Theme) {
-    document.body.classList.add(theme);
+  private _selectTheme(theme: Theme, doc = document) {
+    let docMediator = DocumentMediator.for(doc);
+    
+    docMediator.classList.add(theme);
 
     /**
      * Sync the color scheme:
      *   https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
      */
     if (theme === DARK) {
-      document.documentElement.style.setProperty('color-scheme', 'dark ');
+      docMediator.style.setProperty('color-scheme', 'dark ');
     } else {
-      document.documentElement.style.removeProperty('color-scheme');
+      docMediator.style.removeProperty('color-scheme');
     }
 
     this.currentTheme = theme;
 
-    document.body.classList.remove(...this.inactiveThemes);
+    docMediator.classList.remove(...this.inactiveThemes);
   }
 
   @action
@@ -183,8 +206,8 @@ export default class ThemeManagerService extends Service {
    * @property {Boolean} shouldSaveTheme - flag to control if the theme change should be persisted to localStorage
    */
   @action
-  toggleTheme({ shouldSaveTheme = true } = {}) {
-    this.selectTheme(this.alternateTheme, { shouldSaveTheme });
+  toggleTheme({ shouldSaveTheme = true, doc = document } = {}) {
+    this.selectTheme(this.alternateTheme, { shouldSaveTheme, doc });
   }
 
   /**
