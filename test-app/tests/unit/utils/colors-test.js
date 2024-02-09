@@ -1,7 +1,12 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-import { getChartColors, getChartNeutralColors, getColor, getGraphColors } from '@crowdstrike/ember-toucan-styles';
+import {
+  getChartColors,
+  getChartNeutralColors,
+  getColor,
+  getGraphColors,
+} from '@crowdstrike/ember-toucan-styles';
 
 import { setupThemeSupport } from '@crowdstrike/ember-toucan-styles/test-support';
 
@@ -17,7 +22,7 @@ const graphColors = [
   'graph-9',
   'graph-10',
   'graph-11',
-]
+];
 
 const chartColors = [
   'chart-1',
@@ -30,12 +35,9 @@ const chartColors = [
   'chart-8',
   'chart-9',
   'chart-10',
-]
+];
 
-const chartNeutralColors = [
-  'chart-neutral-1',
-  'chart-neutral-2',
-]
+const chartNeutralColors = ['chart-neutral-1', 'chart-neutral-2'];
 
 const paletteProperties = {
   graph: {
@@ -57,8 +59,8 @@ const paletteProperties = {
     max: 12,
     colors: [...chartColors, ...chartNeutralColors],
     getColors: (count = 12) => getChartColors(count, { includeNeutrals: true }),
-  }
-}
+  },
+};
 
 module('Unit | Utils | Colors ', function (hooks) {
   setupTest(hooks);
@@ -78,8 +80,8 @@ module('Unit | Utils | Colors ', function (hooks) {
     );
   });
 
-  Object.keys(paletteProperties).map(palette=> {
-    const { colors, getColors, max } = paletteProperties[palette]
+  Object.keys(paletteProperties).map((palette) => {
+    const { colors, getColors, max } = paletteProperties[palette];
 
     test(`it returns the ${palette} color wheel palette color values correctly`, function (assert) {
       let paletteColors = getColors();
@@ -117,5 +119,5 @@ module('Unit | Utils | Colors ', function (hooks) {
         assert.strictEqual(getColors(i).length, new Set(getColors(i)).size);
       }
     });
-  })
+  });
 });

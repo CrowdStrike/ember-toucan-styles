@@ -80,7 +80,7 @@ export function getColorScale(numItems: number) {
   return Array.from({ length: numItems }, (_, i) => GRAPH_COLORS[(i + 3) % numColors]);
 }
 
-function getSwatchesForPalette(palette:  'graph' | 'chart' | 'chart-neutral') {
+function getSwatchesForPalette(palette: 'graph' | 'chart' | 'chart-neutral') {
   let currentTheme = getCurrentTheme();
 
   const VALID_PALETTE_COLOR = new RegExp(`${palette}-(\\d+)`);
@@ -95,13 +95,13 @@ function getSwatchesForPalette(palette:  'graph' | 'chart' | 'chart-neutral') {
     }))
     .sort((a, b) => a.i - b.i);
 
-  return swatches
+  return swatches;
 }
 
 export function getGraphColors(count = 11) {
   assert(`requested ${count} graph colors, more than the allowed maximum of 11`, count <= 11);
 
-  const swatches = getSwatchesForPalette('graph')
+  const swatches = getSwatchesForPalette('graph');
 
   const _ = null;
   const [a, b, c, d, e, f, g, h, i, j, k] = swatches;
@@ -134,23 +134,23 @@ export function getChartColors(count = 10, { includeNeutrals = false } = {}) {
 
   assert(`requested ${count} chart colors, more than the allowed maximum of ${max}`, count <= max);
 
-  const swatches = getSwatchesForPalette('chart')
+  const swatches = getSwatchesForPalette('chart');
 
   if (includeNeutrals) {
-    const neutralSwatches = getSwatchesForPalette('chart-neutral')
+    const neutralSwatches = getSwatchesForPalette('chart-neutral');
 
-    swatches.push(...neutralSwatches)
+    swatches.push(...neutralSwatches);
   }
 
-  return swatches.slice(0, count)
+  return swatches.slice(0, count);
 }
 
 export function getChartNeutralColors(count = 2) {
   assert(`requested ${count} chart colors, more than the allowed maximum of 2`, count <= 2);
 
-  const swatches = getSwatchesForPalette('chart-neutral')
+  const swatches = getSwatchesForPalette('chart-neutral');
 
-  return swatches.slice(0, count)
+  return swatches.slice(0, count);
 }
 
 export function getColor(swatchName: string) {
