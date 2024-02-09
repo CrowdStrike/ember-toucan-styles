@@ -80,21 +80,28 @@ export function getColorScale(numItems: number) {
   return Array.from({ length: numItems }, (_, i) => GRAPH_COLORS[(i + 3) % numColors]);
 }
 
+function getSwatchesForPalette(palette:  'graph' | 'chart' | 'chart-neutral') {
+  let currentTheme = getCurrentTheme();
+
+  const VALID_PALETTE_COLOR = new RegExp(`${palette}-(\\d+)`);
+
+  const swatches = Object.values(themeData.themes[currentTheme].colors)
+    .filter(({ name }) => VALID_PALETTE_COLOR.test(name))
+    .map(({ name }) => ({
+      // For each palette, there is a test that asserts `swatchName` is a string for all possible values
+      swatchName: name as string,
+      swatchClass: `text-${name}`,
+      i: parseInt(name.substring(palette.length + 1)),
+    }))
+    .sort((a, b) => a.i - b.i);
+
+  return swatches
+}
+
 export function getGraphColors(count = 11) {
   assert(`requested ${count} graph colors, more than the allowed maximum of 11`, count <= 11);
 
-  let currentTheme = getCurrentTheme();
-
-  const VALID_GRAPH_COLOR = /graph-(\d+)/;
-
-  const swatches = Object.values(themeData.themes[currentTheme].colors)
-    .filter(({ name }) => VALID_GRAPH_COLOR.test(name))
-    .map(({ name }) => ({
-      swatchName: name,
-      swatchClass: `text-${name}`,
-      i: parseInt(name.substring(6)),
-    }))
-    .sort((a, b) => a.i - b.i);
+  const swatches = getSwatchesForPalette('graph')
 
   const _ = null;
   const [a, b, c, d, e, f, g, h, i, j, k] = swatches;
@@ -120,6 +127,30 @@ export function getGraphColors(count = 11) {
   const swatch = sorted[index];
 
   return swatch.filter((color) => color !== null);
+}
+
+export function getChartColors(count = 10, { includeNeutrals = false } = {}) {
+  const max = includeNeutrals ? 12 : 10;
+
+  assert(`requested ${count} chart colors, more than the allowed maximum of ${max}`, count <= max);
+
+  const swatches = getSwatchesForPalette('chart')
+
+  if (includeNeutrals) {
+    const neutralSwatches = getSwatchesForPalette('chart-neutral')
+
+    swatches.push(...neutralSwatches)
+  }
+
+  return swatches.slice(0, count)
+}
+
+export function getChartNeutralColors(count = 2) {
+  assert(`requested ${count} chart colors, more than the allowed maximum of 2`, count <= 2);
+
+  const swatches = getSwatchesForPalette('chart-neutral')
+
+  return swatches.slice(0, count)
 }
 
 export function getColor(swatchName: string) {
