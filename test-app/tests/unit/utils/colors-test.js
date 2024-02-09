@@ -46,8 +46,9 @@ const paletteProperties = {
     getColors: getGraphColors,
   },
   chart: {
-    max: 10,
-    colors: chartColors,
+    max: 12,
+    defaultCount: 11,
+    colors: [...chartColors, ...chartNeutralColors],
     getColors: getChartColors,
   },
   'chart-neutral': {
@@ -55,10 +56,10 @@ const paletteProperties = {
     colors: chartNeutralColors,
     getColors: getChartNeutralColors,
   },
-  'charts-with-neutral': {
-    max: 12,
-    colors: [...chartColors, ...chartNeutralColors],
-    getColors: (count = 12) => getChartColors(count, { includeNeutrals: true }),
+  'charts-without-neutral': {
+    max: 10,
+    colors: chartColors,
+    getColors: (count = 10) => getChartColors(count, { includeNeutrals: false }),
   },
 };
 
@@ -81,7 +82,7 @@ module('Unit | Utils | Colors ', function (hooks) {
   });
 
   Object.keys(paletteProperties).map((palette) => {
-    const { colors, getColors, max } = paletteProperties[palette];
+    const { colors, getColors, max, defaultCount } = paletteProperties[palette];
 
     test(`it returns the ${palette} color wheel palette color values correctly`, function (assert) {
       let paletteColors = getColors();
@@ -95,7 +96,7 @@ module('Unit | Utils | Colors ', function (hooks) {
       });
       assert.deepEqual(
         paletteColors.map((item) => item.swatchName),
-        colors,
+        colors.slice(0, defaultCount ?? max),
         `Full color wheel palette colors returned in the correct order`
       );
     });

@@ -129,7 +129,8 @@ export function getGraphColors(count = 11) {
   return swatch.filter((color) => color !== null);
 }
 
-export function getChartColors(count = 10, { includeNeutrals = false } = {}) {
+// By default includes '1' neutral color at the end of the palette, similar to graph
+export function getChartColors(count = 11, { includeNeutrals = true } = {}) {
   const max = includeNeutrals ? 12 : 10;
 
   assert(`requested ${count} chart colors, more than the allowed maximum of ${max}`, count <= max);
