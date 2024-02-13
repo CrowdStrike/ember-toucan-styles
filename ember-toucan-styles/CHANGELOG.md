@@ -1,5 +1,11 @@
 # `@crowdstrike/ember-toucan-styles`
 
+## 2.2.0
+
+### Minor Changes
+
+- [#27](https://github.com/CrowdStrike/ember-toucan-styles/pull/27) [`197a2d8`](https://github.com/CrowdStrike/ember-toucan-styles/commit/197a2d8d510222e0c56a57a4476ecea845992750) Thanks [@JackRobards](https://github.com/JackRobards)! - Add helper functions for new Charts color palette
+
 ## 2.1.0
 
 ### Minor Changes
