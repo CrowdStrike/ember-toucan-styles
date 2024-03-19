@@ -1,5 +1,11 @@
 # `@crowdstrike/ember-toucan-styles`
 
+## 3.0.0
+
+### Major Changes
+
+- [#29](https://github.com/CrowdStrike/ember-toucan-styles/pull/29) [`6c1aaa3`](https://github.com/CrowdStrike/ember-toucan-styles/commit/6c1aaa3e117ecee77ee8b3789b4d20a5083b666d) Thanks [@JackRobards](https://github.com/JackRobards)! - Upgrade tailwind-toucan-base to latest major version. Breaking changes are only a concern if using the `surface-dash-widget` color with this package's utilities.
+
 ## 2.2.0
 
 ### Minor Changes
