@@ -24,7 +24,7 @@
     "@changesets/cli": "^2.26.0"
   },
   "volta": {
-    "node": "16.15.1",
+    "node": "18.20.4",
     "pnpm": "7.3.0"
   },
   "packageManager": "pnpm@7.3.0",
