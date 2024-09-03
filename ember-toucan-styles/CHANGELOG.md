@@ -1,5 +1,13 @@
 # `@crowdstrike/ember-toucan-styles`
 
+## 3.0.1
+
+### Patch Changes
+
+- [#31](https://github.com/CrowdStrike/ember-toucan-styles/pull/31) [`e3082e9`](https://github.com/CrowdStrike/ember-toucan-styles/commit/e3082e99a13b8b60ed3c111d14fb3a259bcc1d7b) Thanks [@simonihmig](https://github.com/simonihmig)! - Support ember-browser-services v5
+
+  Widen the version range of the dependency on ember-browser-services to support both v4 and v5.
+
 ## 3.0.0
 
 ### Major Changes
