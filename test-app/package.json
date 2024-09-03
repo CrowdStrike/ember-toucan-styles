@@ -29,7 +29,7 @@
   "dependencies": {
     "@crowdstrike/tailwind-toucan-base": "^5.0.0",
     "@crowdstrike/ember-toucan-styles": "workspace:../ember-toucan-styles",
-    "ember-browser-services": "^4.0.3"
+    "ember-browser-services": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.20.12",
